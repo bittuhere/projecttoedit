@@ -38,26 +38,47 @@ window.initHub = function() {
             .then(function() { sr.set({ state: 'online', last_changed: firebase.database.ServerValue.TIMESTAMP }); });
     });
 
-    // Chat unread dot – SKIP during game
-    window.LC.fb('section-hub', window.db.ref('chats'), 'value', function(snap) {
-        if (window.isGameActive()) return;
-        var all = snap.val(), lr = localStorage.getItem('lastReadChat') || 0;
-        var unread = false;
-        if (all) Object.keys(all).forEach(function(cid) {
-            if (cid.includes(pid)) Object.values(all[cid]).forEach(function(m) {
-                if (m.sender !== pn && m.sender !== '_system' && m.timestamp > lr) unread = true;
+    // Optimized chat unread dot
+    var _hubChatRefs = [];
+    window.LC.fn('section-hub', function() {
+        _hubChatRefs.forEach(function(r) { try { r.off(); } catch(e) {} });
+        _hubChatRefs = [];
+    });
+
+    window.LC.fb('section-hub', window.db.ref('friends/' + pn), 'value', function(friendsSnap) {
+        _hubChatRefs.forEach(function(r) { try { r.off(); } catch(e) {} });
+        _hubChatRefs = [];
+        if (!friendsSnap.exists()) return;
+
+        var friends = Object.keys(friendsSnap.val());
+        friends.forEach(function(f) {
+            var cid = [pn, f].sort().join('_');
+            var ref = window.db.ref('chats/' + cid).limitToLast(1);
+            ref.on('value', function(chatSnap) {
+                if (window.isGameActive()) return;
+                var msgs = chatSnap.val();
+                if (!msgs) return;
+                var lr = parseInt(localStorage.getItem('lastReadChat') || '0');
+                var unread = false;
+                Object.values(msgs).forEach(function(m) {
+                    if (m.sender !== pn && m.sender !== '_system' && m.timestamp > lr) unread = true;
+                });
+
+                var dot = document.getElementById('chat-notif-dot');
+                if (dot) {
+                    if (unread) dot.style.display = 'block';
+                    // Note: We don't hide it here because other friends might have unread messages.
+                    // Instead, we'll run a more comprehensive check if needed,
+                    // or just rely on the fact that opening chat updates lastReadChat.
+                }
+                if (unread) {
+                    window._showInGameNotif('💬 New message from ' + f);
+                    var fb = document.querySelector('.hub-friends-btn');
+                    if (fb) fb.classList.add('has-notif');
+                }
             });
+            _hubChatRefs.push(ref);
         });
-        var dot = document.getElementById('chat-notif-dot');
-        if (dot) dot.style.display = unread ? 'block' : 'none';
-        if (unread) {
-            window._showInGameNotif('💬 New chat message!');
-            var fb = document.getElementById('hub-friends-btn') || document.querySelector('.hub-friends-btn');
-            if (fb) { fb.classList.remove('has-notif'); void fb.offsetWidth; fb.classList.add('has-notif'); }
-        } else {
-            var fb2 = document.getElementById('hub-friends-btn') || document.querySelector('.hub-friends-btn');
-            if (fb2) fb2.classList.remove('has-notif');
-        }
     });
 
     // Notification dot – SKIP during game

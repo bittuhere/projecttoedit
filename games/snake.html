@@ -69,57 +69,6 @@
     </style>
 
 <script>
-// === FPS LIMITER & VISIBILITY PAUSE ===
-(function() {
-    var TARGET_FPS = 60;
-    var FRAME_DURATION = 1000 / TARGET_FPS;
-    var lastFrame = 0;
-    var paused = false;
-
-    // Pause on tab switch
-    document.addEventListener('visibilitychange', function() {
-        paused = document.hidden;
-        if (!paused) {
-            lastFrame = performance.now(); // reset to avoid delta spikes
-        }
-    });
-
-    // Override requestAnimationFrame to respect FPS and pause
-    var originalRAF = window.requestAnimationFrame;
-    window.requestAnimationFrame = function(callback) {
-        if (paused) {
-            // If paused, schedule a check when visible (do nothing until resume)
-            return originalRAF(function() {});
-        }
-        var now = performance.now();
-        var delta = now - lastFrame;
-        if (delta >= FRAME_DURATION) {
-            lastFrame = now - (delta % FRAME_DURATION);
-            return originalRAF(callback);
-        } else {
-            // Wait until the next allowed frame
-            return originalRAF(function(ts) {
-                window.requestAnimationFrame(callback);
-            });
-        }
-    };
-
-    // Also patch setInterval if it's used for game updates (e.g., pacman)
-    // We'll replace setInterval with a throttled version.
-    var originalSetInterval = window.setInterval;
-    window.setInterval = function(callback, interval, ...args) {
-        if (interval < 20) {
-            // For very short intervals, we might need to keep them, but we can add a check.
-            // We'll keep the original but add a pause check.
-            return originalSetInterval(function() {
-                if (!paused) callback();
-            }, interval);
-        }
-        return originalSetInterval(callback, interval);
-    };
-
-    console.log('✅ FPS limiter installed (60 FPS, visibility pause)');
-})();
 </script>
 </head>
 <body><style>#spabk{position:fixed;top:10px;left:10px;z-index:99999;background:rgba(0,0,0,0.8);color:#00f3ff;border:1px solid #00f3ff;padding:8px 18px;border-radius:20px;cursor:pointer;font-family:Segoe UI,sans-serif;font-size:.9rem;backdrop-filter:blur(5px);}#spabk:hover{background:#00f3ff;color:#000;}</style><button id="spabk" onclick="window.parent.postMessage( 'spa-back','*'); exitLandscapeAndRelease();">← Hub</button>

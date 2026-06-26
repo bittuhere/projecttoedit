@@ -254,6 +254,7 @@ window.addEventListener('popstate', function(e) {
 // ─── POSTMESSAGE ───────────────────────────────────────────
 window.addEventListener('message', function(e) {
     if (e.data === 'spa-back') {
+        if (localStorage.getItem('isLoggedIn') !== 'true') return;
         var isGame = window.currentSection && window.currentSection.startsWith('section-game');
         if (isGame) { window._setUserStatus('online'); window.MapsTo('section-hub', 'left'); }
         else { window.spaGoBack(); }
@@ -492,6 +493,35 @@ window._doResetControls = function() {
 };
 
 // ─── INIT APP ──────────────────────────────────────────────
+// ─── LANDSCAPE / ROTATION ──────────────────────────────────
+window.handleMobileRotation = async function() {
+    if (!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) return;
+    try {
+        const de = document.documentElement;
+        if (de.requestFullscreen) await de.requestFullscreen();
+        else if (de.webkitRequestFullscreen) await de.webkitRequestFullscreen();
+        else if (de.msRequestFullscreen) await de.msRequestFullscreen();
+
+        if (screen.orientation && screen.orientation.lock) {
+            await screen.orientation.lock('landscape').catch(e => console.warn('Orientation lock failed:', e));
+        }
+    } catch (err) { console.warn('Rotation/FS failed:', err); }
+};
+window.forcelandscape = window.handleMobileRotation;
+
+window.exitLandscapeAndRelease = async function() {
+    try {
+        if (screen.orientation && screen.orientation.unlock) {
+            screen.orientation.unlock();
+        }
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+            if (document.exitFullscreen) await document.exitFullscreen();
+            else if (document.webkitExitFullscreen) await document.webkitExitFullscreen();
+        }
+    } catch (err) { console.warn('Exit FS/Orientation failed:', err); }
+};
+window.exitlandscape = window.exitLandscapeAndRelease;
+
 window.initApp = function() {
     console.log('✅ Arcade Hub initialized.');
     var li = localStorage.getItem('isLoggedIn') === 'true';

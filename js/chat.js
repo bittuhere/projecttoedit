@@ -412,7 +412,7 @@ window._sendChatNotif = function(from, text) {
 // ─── CHAT DOT UPDATE ──────────────────────────────────────
 window.updateChatDot = function() {
     var myName = (localStorage.getItem('playerName') || '').toLowerCase().trim();
-    var lastRead = localStorage.getItem('lastReadChat') || 0;
+    var lastRead = parseInt(localStorage.getItem('lastReadChat') || '0');
     var hasUnread = false;
     window.db.ref('friends/' + myName).once('value', function(friendsSnap) {
         if (!friendsSnap.exists()) { _setDot(false); return; }
@@ -421,13 +421,12 @@ window.updateChatDot = function() {
         if (remaining === 0) { _setDot(false); return; }
         friends.forEach(function(fn) {
             var cid = [myName, fn].sort().join('_');
-            window.db.ref('chats/' + cid).once('value', function(chatSnap) {
+            window.db.ref('chats/' + cid).limitToLast(1).once('value', function(chatSnap) {
                 var msgs = chatSnap.val();
                 if (msgs) {
-                    for (var key in msgs) {
-                        var msg = msgs[key];
-                        if (msg.sender !== myName && !msg.read && msg.timestamp > lastRead) { hasUnread = true; break; }
-                    }
+                    Object.values(msgs).forEach(function(msg) {
+                        if (msg.sender !== myName && !msg.read && msg.timestamp > lastRead) { hasUnread = true; }
+                    });
                 }
                 remaining--;
                 if (remaining === 0) _setDot(hasUnread);
