@@ -244,6 +244,12 @@ window.adminLoadGlobalMessages = function() {
             editBtn.style.cssText = 'background:#3498db;color:#fff;';
             editBtn.onclick = (function(id) { return function() { window.adminEditMsg('global', id); }; })(m.id);
             btns.appendChild(editBtn);
+            var delBtn = document.createElement('button');
+            delBtn.textContent = 'DEL';
+            delBtn.className = 'mini-btn';
+            delBtn.style.cssText = 'background:#e74c3c;color:#fff;';
+            delBtn.onclick = (function(id) { return function() { window.adminDeleteMsg('global', id); }; })(m.id);
+            btns.appendChild(delBtn);
             row.appendChild(preview);
             row.appendChild(btns);
             list.appendChild(row);
@@ -319,6 +325,12 @@ window.adminLoadPrivateMsgs = function() {
             editBtn.style.cssText = 'background:#3498db;color:#fff;';
             editBtn.onclick = (function(id) { return function() { window.adminEditMsg('private/' + target, id); }; })(m.id);
             btns.appendChild(editBtn);
+            var delBtn = document.createElement('button');
+            delBtn.textContent = 'DEL';
+            delBtn.className = 'mini-btn';
+            delBtn.style.cssText = 'background:#e74c3c;color:#fff;';
+            delBtn.onclick = (function(id) { return function() { window.adminDeleteMsg('private/' + target, id); }; })(m.id);
+            btns.appendChild(delBtn);
             row.appendChild(preview);
             row.appendChild(btns);
             list.appendChild(row);

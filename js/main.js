@@ -43,6 +43,13 @@ window._gameIframeMap = {
 
 // ─── MAPS TO ───────────────────────────────────────────────
 window.MapsTo = function(targetId, direction) {
+    // Game Mode Suspension
+    if (targetId.startsWith('section-game-')) {
+        window._stopBgChatNotifListener();
+    } else if (window.currentSection.startsWith('section-game-') && !targetId.startsWith('section-game-')) {
+        window._startBgChatNotifListener();
+    }
+
     if (document.fullscreenElement || document.webkitFullscreenElement) {
         var _done = false;
         function _afterFS() { if (_done) return; _done = true; clearTimeout(_tm); window.MapsTo(targetId, direction); }
@@ -128,7 +135,15 @@ window.spaGoBack = function() {
     var _acBtn = document.getElementById('arcadecraft-back-btn');
     if (_acBtn) _acBtn.style.display = 'none';
     if (!window.spaHistory.length || window._navLock) return;
-    var prev = window.spaHistory.pop();
+
+    var prev = window.spaHistory[window.spaHistory.length - 1];
+
+    // Game Mode Resumption
+    if (window.currentSection.startsWith('section-game-') && !prev.startsWith('section-game-')) {
+        window._startBgChatNotifListener();
+    }
+
+    prev = window.spaHistory.pop();
     var cur = document.getElementById(window.currentSection);
     var tgt = document.getElementById(prev);
     if (!cur || !tgt) return;
@@ -217,6 +232,7 @@ if (screen.orientation) {
 (function setupOfflineDetection() {
     var banner = document.getElementById('offline-banner');
     function updateBannerHeight() {
+        if (window.isGameActive()) return;
         if (banner && banner.style.display !== 'none') {
             document.body.style.setProperty('--banner-height', banner.offsetHeight + 'px');
             document.body.classList.add('offline');
@@ -235,6 +251,7 @@ if (screen.orientation) {
     if (typeof window.db !== 'undefined') {
         var _firstFired = false;
         window.db.ref('.info/connected').on('value', function(snap) {
+            if (window.isGameActive()) return;
             if (!_firstFired) { _firstFired = true; return; }
             if (snap.val() === false) setOfflineDelayed(); else setOnline();
         });
@@ -444,15 +461,22 @@ window._goBackFromGameNotif = function() {
 
 // ─── CHAT NOTIF BG ─────────────────────────────────────────
 window._bgChatRefs = [];
+window._bgChatListenerActive = false;
+
 window._startBgChatNotifListener = function(myName) {
-    window._bgChatRefs.forEach(function(r) { try { r.off(); } catch (e) {} });
-    window._bgChatRefs = [];
+    if (!myName) myName = localStorage.getItem('playerName');
+    if (!myName || window.isGameActive()) return;
+
+    window._stopBgChatNotifListener();
+    window._bgChatListenerActive = true;
+
     window.db.ref('friends/' + myName).once('value', function(snap) {
-        if (!snap.exists()) return;
+        if (!snap.exists() || !window._bgChatListenerActive) return;
         Object.keys(snap.val()).forEach(function(friend) {
             var cid = [myName, friend].sort().join('_');
             var ref = window.db.ref('chats/' + cid).limitToLast(1);
             ref.on('child_added', function(msgSnap) {
+                if (window.isGameActive()) return;
                 var d = msgSnap.val();
                 if (!d || d.sender === myName) return;
                 if (!d.timestamp || (Date.now() - d.timestamp) > 30000) return;
@@ -463,6 +487,12 @@ window._startBgChatNotifListener = function(myName) {
             window._bgChatRefs.push(ref);
         });
     });
+};
+
+window._stopBgChatNotifListener = function() {
+    window._bgChatListenerActive = false;
+    window._bgChatRefs.forEach(function(r) { try { r.off(); } catch (e) {} });
+    window._bgChatRefs = [];
 };
 
 // ─── MEMORY CLEANUP ────────────────────────────────────────
@@ -531,6 +561,7 @@ window.initApp = function() {
             if (snap.exists() && !(snap.val() && snap.val().blocked)) {
                 window.initHub();
                 window.MapsTo('section-hub', 'right');
+                setTimeout(function() { window._startBgChatNotifListener(pn); }, 2000);
             } else {
                 localStorage.clear();
                 window.MapsTo('section-login', 'left');

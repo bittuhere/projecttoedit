@@ -63,6 +63,7 @@ window.initChat = function() {
     // Invite listener
     if (typeof window.LC !== 'undefined') {
         window.LC.fb('section-chat', window.db.ref('invites/' + _chatPid), 'child_added', function(snap) {
+            if (window.isGameActive()) return;
             var inv = snap.val();
             if (!inv) return;
             window.db.ref('invites/' + _chatPid + '/' + snap.key).remove();
@@ -125,7 +126,7 @@ window.initChat = function() {
                 var cid = [myName, fn].sort().join('_');
                 var uRef = window.db.ref('chats/' + cid).limitToLast(1);
                 uRef.on('value', function(cs) {
-                    if (window.isGameActive()) return;
+                    if (window.isGameActive() || window.currentSection !== 'section-chat') return;
                     var msgs = cs.val(),
                         hasU = false;
                     if (msgs) {
@@ -230,7 +231,7 @@ window.loadChatMsgs = function() {
     var _lastMsgDate = '';
     if (typeof window.LC !== 'undefined') {
         window.LC.fb('section-chat', window.db.ref('chats/' + thisChatId), 'child_added', function(snap) {
-            if (window.currentChatId !== thisChatId) return;
+            if (window.isGameActive() || window.currentChatId !== thisChatId) return;
             var d = snap.val(),
                 id = snap.key;
             if (d.timestamp) {
@@ -264,7 +265,7 @@ window.loadChatMsgs = function() {
     }
     if (typeof window.LC !== 'undefined') {
         window.LC.fb('section-chat', window.db.ref('chats/' + thisChatId), 'child_changed', function(snap) {
-            if (window.currentChatId !== thisChatId) return;
+            if (window.isGameActive() || window.currentChatId !== thisChatId) return;
             var d = snap.val(),
                 el = document.getElementById('msg-' + snap.key);
             if (el && d.read && d.sender === mn) { var t = el.querySelector('.msg-status'); if (t) { t.classList.remove('tick-sent');

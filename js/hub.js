@@ -49,6 +49,7 @@ window.initHub = function() {
         _hubChatRefs.forEach(function(r) { try { r.off(); } catch(e) {} });
         _hubChatRefs = [];
         if (!friendsSnap.exists()) return;
+        if (window.isGameActive()) return;
 
         var friends = Object.keys(friendsSnap.val());
         friends.forEach(function(f) {
@@ -102,6 +103,7 @@ window.initHub = function() {
 
     // Invite listener – keep active (not a UI update, so it's fine)
     window.LC.fb('section-hub', window.db.ref('invites/' + pid), 'child_added', function(snap) {
+        if (window.isGameActive()) return;
         var inv = snap.val();
         if (!inv) return;
         window.db.ref('invites/' + pid + '/' + snap.key).remove();
@@ -162,8 +164,9 @@ window.openGame = function(k) {
     var s = window.gameMap[k];
     if (!s) return;
     if (k === 'arcadecraft') {
+        // Fix: Use MapsTo instead of location.href to keep SPA context
         window._setUserStatus('⛏️ Playing ArcadeCraft');
-        window.location.href = 'eaglercraft.html';
+        window.MapsTo(s, 'right');
         return;
     }
     if (k === 'quiz') {
