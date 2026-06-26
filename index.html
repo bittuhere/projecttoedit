@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta name="google-site-verification" content="rNY8TOAZ2F90cDmywRgpcIvI58KzEdFR1NMKVMqktlY" />
+
+    <title>Arcade Hub by bittuhere | Free Online Games</title>
+    <meta name="description" content="Arcade Hub by bittuhere. Play Flappy Bird, Dino Game, Snake, Pac-Man, Multiplayer Car Game, Tic Tac Toe online. Free browser games.">
+    <meta name="keywords" content="arcade hub, bittuhere, arcadehub, BittuPlay, BitArcade, online games, multiplayer games, flappy bird, dino game, snake game, pac-man">
+    <meta name="author" content="bittuhere">
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0d0b22">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Arcade Hub — bittuhere">
+    <meta property="og:description" content="Free online arcade games by bittuhere. Play now!">
+    <meta property="og:url" content="https://bittuhere.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Arcade Hub by bittuhere">
+    <meta property="og:image" content="https://bittuhere.github.io/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Arcade Hub",
+            "alternateName": ["Arcade Hub", "bittuhere", "arcadehub", "BittuPlay", "BitArcade"],
+            "url": "https://bittuhere.github.io/",
+            "description": "Free online arcade games — Flappy Bird, Dino, Snake, Pac-Man, Multiplayer Car Game, Tic Tac Toe",
+            "author": { "@type": "Person", "name": "bittu", "url": "https://bittuhere.github.io/" }
+        }
+    </script>
+
+    <link rel="canonical" href="https://bittuhere.github.io/">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- ===== STUBS — prevent "function is not defined" before scripts load ===== -->
+    <script>
+        function stub() { console.warn('Function not yet loaded. Waiting for scripts...'); }
+
+        // All global functions referenced by inline onclick/onsubmit
+        window.MapsTo = stub;
+        window.spaGoBack = stub;
+        window.processAuth = stub;
+        window.toggleMode = stub;
+        window.togglePass = stub;
+        window.googleSignIn = stub;
+        window.googleSetupComplete = stub;
+        window.googleSetupCancel = stub;
+        window.openForgotPassword = stub;
+        window.closeForgotPassword = stub;
+        window.forgotSendCode = stub;
+        window.forgotVerifyCode = stub;
+        window.verifyConfirmCode = stub;
+        window.verifyResendCode = stub;
+        window.verifyCancel = stub;
+        window.goToTroubleshoot = stub;
+        window.logout = stub;
+        window.openChangePass = stub;
+        window.closeChangePass = stub;
+        window.cpHandleStep = stub;
+        window.cpToggleEye = stub;
+        window.openNotifications = stub;
+        window.closeNotifications = stub;
+        window.switchNotifTab = stub;
+        window.showHubSection = stub;
+        window.goHubBack = stub;
+        window.openGame = stub;
+        window.openMyProfile = stub;
+        window.searchUserProfile = stub;
+        window.openUnameChangeModal = stub;
+        window.closeUnameModal = stub;
+        window.submitUnameRequest = stub;
+        window.saveBio = stub;
+        window.updateBioCount = stub;
+        window.closeProfileCard = stub;
+        window.openProfileCard = stub;
+        window.lbSelectGame = stub;
+        window.loadLeaderboard = stub;
+        window.initChat = stub;
+        window.addFriend = stub;
+        window.acceptFriendRequest = stub;
+        window.rejectFriendRequest = stub;
+        window.openChatWith = stub;
+        window.closeChatPanel = stub;
+        window.sendMessage = stub;
+        window.handleChatKey = stub;
+        window.handleNotifToggle = stub;
+        window.launchAdminEntry = stub;
+        window.alToggleEye = stub;
+        window.alVerify = stub;
+        window.alClose = stub;
+        window.adminShowSection = stub;
+        window.adminLoadDashboard = stub;
+        window.adminLoadUsers = stub;
+        window.adminRenameUser = stub;
+        window.adminDeleteUser = stub;
+        window.adminViewScore = stub;
+        window.adminResetScore = stub;
+        window.adminSetScore = stub;
+        window.adminSendGlobal = stub;
+        window.adminSendSpecific = stub;
+        window.adminLoadRooms = stub;
+        window.adminCleanRooms = stub;
+        window.adminLoadOnline = stub;
+        window.adminLoadQuizLb = stub;
+        window.adminResetQuizWeek = stub;
+        window.adminSetAiQuestion = stub;
+        window.adminToggleBlock = stub;
+        window.adminToggleEmailVerif = stub;
+        window.adminStrictVerify = stub;
+        window.adminResetPass = stub;
+        window.adminDeleteRoom = stub;
+        window.adminClearQuizEntry = stub;
+        window.adminDeleteMsg = stub;
+        window.adminEditMsg = stub;
+        window.adminLoadPrivateMsgs = stub;
+        window.adminFilterUsers = stub;
+        window.showInputModal = stub;
+        window.showConfirm = stub;
+        window.showNotify = stub;
+        window.tyGoHome = stub;
+        window.startTyCountdown = stub;
+        window.submitContactForm = stub;
+        window.contactFileChosen = stub;
+        window.contactFileRemove = stub;
+        window.contactDragOver = stub;
+        window.contactDragLeave = stub;
+        window.contactDrop = stub;
+        window.contactCheckSize = stub;
+        window.loadFairCopies = stub;
+        window.fairLoadFolder = stub;
+        window.fairLoadFile = stub;
+        window.fairShowOptions = stub;
+        window.quizOpenRulesModal = stub;
+        window.quizCloseModal = stub;
+        window.quizStartFromModal = stub;
+        window.quizNext = stub;
+        window.quizDismissCheat = stub;
+        window.quizShowLobby = stub;
+        window.initQuizSection = stub;
+        window._goBackFromGameNotif = stub;
+        window.chatBubbleHub = stub;
+        window.chatBubbleChat = stub;
+        window.chatBubbleClose = stub;
+        window.handleMobileRotation = stub;
+        window.exitLandscapeAndRelease = stub;
+        window._doResetControls = stub;
+        window._doResetControls = stub;
+        window.loadFriendsForInvite = stub;
+        window.sendInvite = stub;
+
+        // Also stub the admin functions used inside admin panel iframe communication
+        window._doResetControls = stub;
+        window._adminReadOnly = false;
+        window._adminIsHimanshu = false;
+
+        console.log('🔧 Stubs installed. Waiting for scripts to load...');
+    </script>
+
+    <!-- ===== LOADER CSS (inline — critical) ===== -->
+    <style>
+        /* ═══ Neon Loader ═══ */
+        #loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: #0d0b22;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.4s ease;
+        }
+        #loading-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .neon-spinner-wrap {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            margin-bottom: 30px;
+        }
+        .neon-ring {
+            position: absolute;
+            border-radius: 50%;
+            animation: neonSpin 1.2s linear infinite;
+        }
+        .neon-ring:nth-child(1) {
+            inset: 0;
+            border: 4px solid transparent;
+            border-top-color: #00f3ff;
+        }
+        .neon-ring:nth-child(2) {
+            inset: 10px;
+            border: 4px solid transparent;
+            border-bottom-color: #ff00ff;
+            animation-direction: reverse;
+            animation-duration: 0.8s;
+        }
+        .neon-ring:nth-child(3) {
+            inset: 22px;
+            border: 4px solid transparent;
+            border-left-color: #00ff88;
+            animation-duration: 1.6s;
+        }
+        .neon-dot {
+            position: absolute;
+            inset: 38px;
+            background: radial-gradient(circle, #00f3ff, #ff00ff);
+            border-radius: 50%;
+            animation: neonPulse 1s ease-in-out infinite alternate;
+        }
+        @keyframes neonSpin {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes neonPulse {
+            from { transform: scale(0.8); opacity: 0.6; }
+            to { transform: scale(1.2); opacity: 1; }
+        }
+        .loading-text {
+            font-family: 'Teko', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 6px;
+            background: linear-gradient(to right, #00f3ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textPulse 1.5s ease-in-out infinite alternate;
+        }
+        .loading-sub {
+            color: #555;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            margin-top: 8px;
+        }
+        @keyframes textPulse {
+            from { filter: brightness(0.7); }
+            to { filter: brightness(1.3); }
+        }
+        #boot-bar-wrap {
+            width: 180px;
+            height: 3px;
+            background: rgba(0, 243, 255, 0.15);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 14px;
+        }
+        #boot-bar {
+            height: 100%;
+            background: #00f3ff;
+            width: 0%;
+            transition: width 0.4s ease;
+            box-shadow: 0 0 8px #00f3ff;
+        }
+        #boot-pct {
+            color: rgba(0, 243, 255, 0.5);
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== NEON LOADING OVERLAY ===== -->
+    <div id="loading-overlay">
+        <div class="neon-spinner-wrap">
+            <div class="neon-ring"></div>
+            <div class="neon-ring"></div>
+            <div class="neon-ring"></div>
+            <div class="neon-dot"></div>
+        </div>
+        <div class="loading-text">ARCADE HUB</div>
+        <div class="loading-sub" id="boot-sub">STARTING UP...</div>
+        <div id="boot-bar-wrap">
+            <div id="boot-bar" style="width:0%;"></div>
+        </div>
+        <div id="boot-pct">0%</div>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="section-login" class="spa-section active"
+        style="background:var(--bg-gradient);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;">
+        <div class="login-card">
+            <h1 id="login-header">LOGIN</h1>
+            <p id="login-sub">Enter the Arcade World</p>
+            <!-- FIX: onsubmit calls window.processAuth and returns false -->
+            <form id="login-form" autocomplete="on" style="display:contents;" onsubmit="window.processAuth(event);return false;">
+                <input type="text" id="login-username" name="username" placeholder="Username or Email" autocomplete="username">
+                <input type="email" id="login-email" name="email" placeholder="Email address (required)" autocomplete="email" style="display:none;">
+                <div style="position:relative;">
+                    <input type="password" id="login-password" name="password" placeholder="Password" autocomplete="current-password">
+                    <span id="eye-btn" onclick="window.togglePass()" style="position:absolute;right:10px;top:8px;cursor:pointer;z-index:10;background:#87CEEB;border-radius:6px;padding:4px;display:inline-flex;align-items:center;justify-content:center;">
+                        <img id="eye-icon" src="data:image/png;base64,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" style="width:25px;height:auto;filter:drop-shadow(0 0 5px var(--neon-blue));">
+                    </span>
+                </div>
+                <div class="spin-loader" id="login-loader"></div>
+                <div class="status-msg" id="login-status"></div>
+                <div id="trouble-link" class="trouble-link" onclick="window.goToTroubleshoot()">Trouble signing in? Click here</div>
+                <div id="forgot-link" style="text-align:center;margin-top:-6px;margin-bottom:4px;display:block;">
+                    <span onclick="window.openForgotPassword()" style="color:#00f3ff;font-size:.8rem;cursor:pointer;opacity:.7;letter-spacing:1px;">Forgot Password?</span>
+                </div>
+                <button class="l-btn btn-go" type="submit" id="submit-btn">ENTER</button>
+            </form>
+            <!-- Google Sign In -->
+            <div style="display:flex;align-items:center;gap:10px;margin:10px 0;">
+                <div style="flex:1;height:1px;background:rgba(255,255,255,.15);"></div>
+                <span style="color:rgba(255,255,255,.35);font-size:.75rem;letter-spacing:1px;">OR</span>
+                <div style="flex:1;height:1px;background:rgba(255,255,255,.15);"></div>
+            </div>
+            <button onclick="window.googleSignIn()" id="google-btn"
+                style="width:100%;padding:11px;border:1px solid rgba(255,255,255,.2);border-radius:10px;background:rgba(255,255,255,.05);color:#fff;font-family:Teko,sans-serif;font-size:1.05rem;letter-spacing:1.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:.2s;">
+                <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.6 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.5 6.5 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19.1 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.5 6.5 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.4 35.5 26.8 36.5 24 36.5c-5.2 0-9.7-3.4-11.3-8.1l-6.6 5.1C9.6 39.6 16.3 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.3 4.1-4.2 5.4l6.2 5.2C41.5 35.8 44 30.3 44 24c0-1.2-.1-2.4-.4-3.5z"/></svg>
+                <span id="google-btn-text">CONTINUE WITH GOOGLE</span>
+            </button>
+            <span class="switch-link" onclick="window.toggleMode()" id="switch-btn">New here? Create ID</span>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <div id="section-verify-email" class="spa-section hidden-right"
+        style="background:var(--bg-gradient);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;">
+        <div class="login-card" style="text-align:center;">
+            <div style="font-size:3rem;margin-bottom:4px;line-height:1;">&#9993;</div>
+            <h1 style="letter-spacing:3px;margin:0 0 6px;">VERIFY EMAIL</h1>
+            <p id="verify-page-desc" style="color:rgba(255,255,255,.55);font-size:.88rem;margin:0 0 20px;line-height:1.5;"></p>
+            <input id="verify-code-input" type="text" placeholder="6-digit code" maxlength="6" inputmode="numeric"
+                style="width:100%;padding:14px;border-radius:12px;border:1px solid rgba(0,243,255,.35);background:rgba(0,0,0,.3);color:#00f3ff;font-size:1.8rem;letter-spacing:12px;text-align:center;box-sizing:border-box;margin-bottom:12px;font-family:monospace;">
+            <button onclick="window.verifyConfirmCode()" class="l-btn btn-go" style="margin-bottom:10px;">VERIFY &amp; CONTINUE</button>
+            <div id="verify-status" style="font-size:.84rem;min-height:20px;margin-bottom:8px;"></div>
+            <span onclick="window.verifyResendCode()" style="color:rgba(0,243,255,.6);font-size:.8rem;cursor:pointer;letter-spacing:1px;">Resend code</span>
+            <br>
+            <span onclick="window.verifyCancel()" style="color:rgba(255,255,255,.25);font-size:.75rem;cursor:pointer;margin-top:10px;display:inline-block;letter-spacing:1px;">Cancel &amp; go back</span>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- GOOGLE PROFILE SETUP                                         -->
+    <!-- ============================================================ -->
+    <div id="section-google-setup" class="spa-section hidden-right"
+        style="background:var(--bg-gradient);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;">
+        <div class="login-card">
+            <div style="text-align:center;margin-bottom:4px;">
+                <svg width="32" height="32" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.6 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.5 6.5 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19.1 13 24 13c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34.5 6.5 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.4 35.5 26.8 36.5 24 36.5c-5.2 0-9.7-3.4-11.3-8.1l-6.6 5.1C9.6 39.6 16.3 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.3 4.1-4.2 5.4l6.2 5.2C41.5 35.8 44 30.3 44 24c0-1.2-.1-2.4-.4-3.5z"/></svg>
+            </div>
+            <h1 style="letter-spacing:3px;margin:0 0 4px;text-align:center;">COMPLETE PROFILE</h1>
+            <p id="google-setup-email-label" style="color:rgba(0,243,255,.6);font-size:.8rem;text-align:center;margin:0 0 18px;letter-spacing:1px;"></p>
+            <input type="text" id="gsetup-username" placeholder="Choose a username (a-z 0-9)"
+                style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(0,243,255,.3);background:rgba(0,0,0,.3);color:#fff;font-size:1rem;box-sizing:border-box;margin-bottom:10px;">
+            <input type="password" id="gsetup-password" placeholder="Set a password (min 3 chars)"
+                style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(0,243,255,.3);background:rgba(0,0,0,.3);color:#fff;font-size:1rem;box-sizing:border-box;margin-bottom:10px;">
+            <input type="password" id="gsetup-confirm" placeholder="Confirm password"
+                style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(0,243,255,.3);background:rgba(0,0,0,.3);color:#fff;font-size:1rem;box-sizing:border-box;margin-bottom:10px;">
+            <div class="spin-loader" id="gsetup-loader"></div>
+            <div id="gsetup-status" style="font-size:.84rem;min-height:20px;margin-bottom:10px;text-align:center;"></div>
+            <button onclick="window.googleSetupComplete()" class="l-btn btn-go">CREATE ACCOUNT</button>
+            <span onclick="window.googleSetupCancel()" style="display:block;text-align:center;color:rgba(255,255,255,.25);font-size:.75rem;cursor:pointer;margin-top:12px;letter-spacing:1px;">Cancel</span>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TROUBLESHOOT                                                 -->
+    <!-- ============================================================ -->
+    <div id="section-troubleshoot" class="spa-section hidden-right" style="background:#0f0c29;">
+        <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;">
+            <div class="ts-card">
+                <h1>LOGIN ANALYSIS</h1>
+                <p style="color:#aaa;">Analysis for account attempt:</p>
+                <div id="ts-user" class="user-box"></div>
+                <div id="ts-username-analysis"></div>
+                <div id="ts-password-analysis"></div>
+                <div id="ts-suggestion-area"></div>
+                <button class="ts-btn" onclick="window.MapsTo('section-login','left')">GO BACK &amp; FIX</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- HUB                                                          -->
+    <!-- ============================================================ -->
+    <div id="section-hub" class="spa-section hidden-right" style="background:var(--bg-gradient);">
+        <button class="hub-friends-btn" onclick="window.MapsTo('section-chat','right')">
+            &#128101; <span class="btn-label">Friends</span> <div id="chat-notif-dot"></div>
+        </button>
+        <div class="notif-btn" onclick="window.openNotifications()">&#128276; <span class="btn-label">Notifs</span> <div id="notif-dot" class="red-dot"></div>
+        </div>
+        <div class="hub-profile-btn" onclick="window.openMyProfile()">👤 <span class="btn-label">Profile</span></div>
+        <div class="hub-lb-btn" onclick="window.MapsTo('section-leaderboard','right')">&#127942; <span class="btn-label">Leaderboard</span></div>
+        <div id="notif-modal" onclick="window.closeNotifications()">
+            <div class="notif-content" onclick="event.stopPropagation()">
+                <!-- Header -->
+                <div class="notif-header">
+                    <div class="notif-header-left">
+                        <span class="notif-header-icon">🔔</span>
+                        <h3>NOTIFICATIONS</h3>
+                        <span class="notif-unread-badge" id="notif-unread-count"></span>
+                    </div>
+                    <button class="notif-close-x" onclick="window.closeNotifications()" aria-label="Close">✕</button>
+                </div>
+                <!-- Tabs -->
+                <div class="notif-tabs">
+                    <button id="notif-tab-global" class="notif-tab active" onclick="window.switchNotifTab('global')">
+                        🌐 Global
+                    </button>
+                    <button id="notif-tab-private" class="notif-tab" onclick="window.switchNotifTab('private')">
+                        🔒 Private
+                    </button>
+                </div>
+                <!-- List -->
+                <div id="notif-messages"></div>
+                <!-- Footer -->
+                <div class="notif-footer">
+                    <button class="notif-close-btn" onclick="window.closeNotifications()">✕ CLOSE</button>
+                </div>
+            </div>
+        </div>
+        <div class="hub-inner">
+            <div class="hub-container">
+                <h1 id="hub-greeting">ARCADE HUB</h1>
+                <p class="subtitle" id="hub-subtitle">Select a Category</p>
+                <p id="hub-last-login" style="font-size:0.72rem;color:rgba(255,255,255,0.35);margin:-8px 0 8px;"></p>
+                <div id="hub-main" class="menu-grid">
+                    <div onclick="window.showHubSection('study')" class="game-btn btn-study"><span>&#128218;</span> Study</div>
+                    <div onclick="window.showHubSection('multi')" class="game-btn btn-multi"><span>&#9876;&#65039;</span>
+                        Multiplayer Games!</div>
+                    <div onclick="window.showHubSection('single')" class="game-btn btn-single"><span>&#128377;&#65039;</span>
+                        Singleplayer Games</div>
+                    <div onclick="window.showHubSection('contact')" class="game-btn btn-contact"><span>&#128231;</span> Contact
+                        Us</div>
+                </div>
+                <div id="hub-study" class="hub-hidden">
+                    <button onclick="window.goHubBack()" class="hub-back-btn">&#8592; Back to Menu</button>
+                    <div class="game-list-grid">
+                        <div onclick="window.openGame('fair')" class="game-btn btn-fair full-width"><span>&#128221;</span> Fair Copies
+                        </div>
+                        <div onclick="window.quizOpenRulesModal()" class="game-btn full-width" style="background:linear-gradient(45deg,#6c3483,#2980b9);"><span>🧠</span> Weekly Quiz<br><span style="font-size:.7rem;opacity:.7;font-family:Segoe UI,sans-serif;">Class 8 · Maths &amp; Science</span></div>
+                    </div>
+                </div>
+                <div id="hub-multi" class="hub-hidden">
+                    <button onclick="window.goHubBack()" class="hub-back-btn">&#8592; Back to Menu</button>
+                    <div class="game-list-grid">
+                        <div onclick="window.openGame('multittt')" class="game-btn btn-multi full-width">
+                            <span>&#9876;&#65039;</span> Tic Tac Toe Online
+                        </div>
+                        <div onclick="window.openGame('multicar')" class="game-btn btn-multi full-width"><span>&#128664;</span>
+                            Car Game 3D (Multiplayer)</div>
+                        <div onclick="window.openGame('arcadecraft')" class="game-btn btn-craft full-width">
+                            <span>⛏️</span> ArcadeCraft
+                        </div>
+                    </div>
+                </div>
+                <div id="hub-single" class="hub-hidden">
+                    <button onclick="window.goHubBack()" class="hub-back-btn">&#8592; Back to Menu</button>
+                    <div class="game-list-grid">
+                        <div onclick="window.openGame('car')" class="game-btn btn-car full-width">
+                            <span>&#127950;&#65039;</span> Real City Drift
+                        </div>
+                        <div onclick="window.openGame('pacman')" class="game-btn btn-pacman"><span>ᗧ</span> Pac-Man
+                            Reworked<br>(Leaderboard Game)</div>
+                        <div onclick="window.openGame('flappy')" class="game-btn btn-flappy"><span>&#128038;</span> Flappy
+                            Bird<br>(Leaderboard Game)</div>
+                        <div onclick="window.openGame('dino')" class="game-btn btn-dino"><span>&#129430;</span> Dino
+                            Game<br>(Leaderboard Game)</div>
+                        <div onclick="window.openGame('snake')" class="game-btn btn-snake"><span>&#128013;</span> Snake
+                            Game<br>(Leaderboard Game)</div>
+                        <div onclick="window.openGame('ttt')" class="game-btn"
+                            style="background:linear-gradient(45deg,#00f3ff,#0099ff);"><span>&#10060;&#11093;</span> Tic
+                            Tac Toe</div>
+                        <div onclick="window.openGame('rpsrand')" class="game-btn"
+                            style="background:linear-gradient(45deg,#00a2ff,#d9ff00);color:black;text-shadow:none;">
+                            <span>&#127922;</span> RPS (Random)
+                        </div>
+                        <div onclick="window.openGame('rps')" class="game-btn btn-rps full-width"><span>&#9986;&#65039;</span>
+                            Rock Paper Scissors</div>
+                        <div onclick="window.openGame('arcadecraft')" class="game-btn btn-craft full-width">
+                            <span>⛏️</span> ArcadeCraft
+                        </div>
+                    </div>
+                </div>
+                <div id="hub-contact" class="hub-hidden">
+                    <button onclick="window.goHubBack()" class="hub-back-btn">&#8592; Back to Menu</button>
+                    <form id="contact-form" onsubmit="window.submitContactForm(event)">
+                        <div class="form-group"><label class="form-label">Your Email</label><input type="email"
+                                id="contact-email" class="form-input" placeholder="Enter your email" required></div>
+                        <div class="form-group"><label class="form-label">Subject</label><input type="text"
+                                id="contact-subject" class="form-input" placeholder="What is this about?" required>
+                        </div>
+                        <div class="form-group"><label class="form-label">Message</label><textarea id="contactMsg"
+                                class="form-textarea" oninput="window.contactCheckSize()" placeholder="Describe your issue or question..." required></textarea>
+                            <div class="contact-size-bar"><div class="contact-size-bar-fill" id="contact-size-fill" style="width:0%"></div></div>
+                            <div class="contact-size-info" id="contact-size-info"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Attach File <span style="color:rgba(255,255,255,.35);font-size:.72rem;">(optional · max 5 MB)</span></label>
+                            <div class="contact-file-zone" id="contact-file-zone"
+                                ondragover="window.contactDragOver(event)" ondragleave="window.contactDragLeave(event)" ondrop="window.contactDrop(event)">
+                                <input type="file" id="contact-file-input" accept="image/*,.pdf,.txt,.doc,.docx"
+                                    onchange="window.contactFileChosen(this.files[0])">
+                                <div class="contact-file-label">📎 <span>Tap to attach</span> or drag &amp; drop here</div>
+                            </div>
+                            <div id="contact-file-preview" style="display:none;" class="contact-file-preview">
+                                <span id="contact-file-name">file.pdf</span>
+                                <span id="contact-file-size" style="color:rgba(255,255,255,.4);"></span>
+                                <button type="button" class="cf-remove" onclick="window.contactFileRemove()" title="Remove">✕</button>
+                            </div>
+                        </div>
+                        <div id="contact-status" style="min-height:20px;font-size:.9rem;margin-bottom:8px;"></div>
+                        <button type="submit" class="submit-btn" id="contact-send-btn">SEND MESSAGE</button>
+                    </form>
+                </div>
+                <div class="controls">
+                    <button onclick="window.logout()" class="logout-btn">Logout</button>
+                    <button onclick="window.openChangePass()" class="logout-btn"
+                        style="border-color:#00f3ff;color:#00f3ff;margin-left:10px;">Change Password</button>
+                    <button onclick="window.launchAdminEntry()" class="admin-entry-btn">⚠ ADMIN PANEL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ADMIN PANEL SECTION                                          -->
+    <!-- ============================================================ -->
+    <div id="section-admin" class="spa-section hidden-right">
+        <div class="admin-section-inner">
+            <div class="admin-header-bar">
+                <h1>⚡ ADMIN CONTROL</h1>
+                <button class="admin-back-btn" onclick="(function(){window._adminIsHimanshu=false;window.spaGoBack();})()">← Hub</button>
+            </div>
+            <div style="width:100%;max-width:780px;background:rgba(0,0,0,.2);border-radius:14px;padding:16px;">
+                <div class="menu-container" style="display:flex;gap:7px;margin-bottom:16px;flex-wrap:wrap;">
+                    <button class="admin-btn" onclick="window.adminShowSection('dashboard',this)">📊 Dashboard</button>
+                    <button class="admin-btn" onclick="window.adminShowSection('users',this)">👥 Users</button>
+                    <button class="admin-btn" onclick="window.adminShowSection('rename',this)">✏️ Rename</button>
+                    <button class="admin-btn" onclick="window.adminShowSection('delete',this)">🗑️ Delete</button>
+                    <button class="admin-btn" onclick="window.adminShowSection('scores',this)">🏆 Scores</button>
+                    <button class="admin-btn" onclick="window.adminShowSection('global',this)">📢 Announce</button>
+                    <button class="admin-btn" onclick="window.adminShowSection('specific',this)">✉️ DM</button>
+                    <button class="admin-btn" onclick="window.adminShowSection('rooms',this)">🏠 Rooms</button>
+                    <button class="admin-btn" onclick="window.adminShowSection('quiz',this)">🧠 Quiz</button>
+                    <button class="admin-btn" onclick="window.adminShowSection('online',this)">🟢 Online</button>
+                </div>
+
+                <!-- DASHBOARD -->
+                <div id="admin-section-dashboard" class="admin-section" style="display:block;">
+                    <div class="adm-h3">📊 Dashboard</div>
+                    <div id="adm-stats-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;"></div>
+                    <div id="adm-recent"></div>
+                </div>
+
+                <!-- USERS -->
+                <div id="admin-section-users" class="admin-section" style="display:none;">
+                    <div class="adm-h3">👥 User Management</div>
+                    <input id="adminUserSearch" type="text" placeholder="🔍 Search users..." oninput="window.adminFilterUsers()" class="adm-input">
+                    <div style="overflow-x:auto;">
+                    <table class="adm-table">
+                        <thead><tr>
+                            <th>User</th><th>Status</th><th>Joined</th><th>Actions</th>
+                        </tr></thead>
+                        <tbody id="adminUserTableBody"></tbody>
+                    </table>
+                    </div>
+                </div>
+
+                <!-- RENAME -->
+                <div id="admin-section-rename" class="admin-section" style="display:none;">
+                    <div class="adm-h3">✏️ Rename User</div>
+                    <p class="adm-hint">Migrates profile, friends, chats, scores, medals, quiz data → new key. Old entry fully removed.</p>
+                    <input id="adminOldName" type="text" placeholder="Current username" class="adm-input">
+                    <input id="adminNewName" type="text" placeholder="New username (a-z 0-9 only)" class="adm-input">
+                    <button onclick="window.adminRenameUser()" class="adm-action-btn" style="background:#f1c40f;color:#000;">✏️ RENAME USER</button>
+                    <div id="adminRenameStatus" class="adm-status"></div>
+                </div>
+
+                <!-- DELETE -->
+                <div id="admin-section-delete" class="admin-section" style="display:none;">
+                    <div class="adm-h3">🗑️ Delete User</div>
+                    <p class="adm-hint">Permanently removes account, friends, status, invites, requests. Cannot be undone.</p>
+                    <input id="adminDeleteName" type="text" placeholder="Username to delete" class="adm-input">
+                    <button onclick="window.adminDeleteUser()" class="adm-action-btn" style="background:#e74c3c;color:#fff;">🗑️ DELETE PERMANENTLY</button>
+                    <div id="adminDeleteStatus" class="adm-status"></div>
+                </div>
+
+                <!-- SCORES -->
+                <div id="admin-section-scores" class="admin-section" style="display:none;">
+                    <div class="adm-h3">🏆 Score Management</div>
+                    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+                        <input id="adminScoreUser" type="text" placeholder="Username" class="adm-input" style="flex:1;min-width:100px;margin:0;">
+                        <select id="adminScoreGame" class="adm-input" style="flex:1;min-width:110px;margin:0;">
+                            <option value="">All games</option>
+                            <option value="flappy_highscore">🐦 Flappy</option>
+                            <option value="dino_highscore">🦕 Dino</option>
+                            <option value="snake_highscore">🐍 Snake</option>
+                            <option value="pacman_highscore">ᗧ Pac-Man</option>
+                        </select>
+                    </div>
+                    <div style="display:flex;gap:7px;margin-bottom:10px;flex-wrap:wrap;">
+                        <button onclick="window.adminViewScore()" style="flex:1;background:#3498db;color:#fff;border:none;padding:9px;border-radius:8px;cursor:pointer;font-family:Teko,sans-serif;font-size:1rem;">👁 VIEW</button>
+                        <button onclick="window.adminResetScore()" style="flex:1;background:#e74c3c;color:#fff;border:none;padding:9px;border-radius:8px;cursor:pointer;font-family:Teko,sans-serif;font-size:1rem;">🗑 RESET</button>
+                        <button onclick="window.adminSetScore()" style="flex:1;background:#f1c40f;color:#000;border:none;padding:9px;border-radius:8px;cursor:pointer;font-family:Teko,sans-serif;font-size:1rem;">✏️ SET</button>
+                    </div>
+                    <div id="adminScoreStatus" class="adm-status"></div>
+                    <div style="overflow-x:auto;">
+                    <table class="adm-table">
+                        <thead><tr><th>User</th><th>🐦Flappy</th><th>🦕Dino</th><th>🐍Snake</th><th>ᗧPacMan</th></tr></thead>
+                        <tbody id="adminInfoTableBody"></tbody>
+                    </table>
+                    </div>
+                </div>
+
+                <!-- ANNOUNCE -->
+                <div id="admin-section-global" class="admin-section" style="display:none;">
+                    <div class="adm-h3">📢 Global Announcement</div>
+                    <textarea id="adminGlobalText" placeholder="Message shown to ALL players..." class="adm-textarea"></textarea>
+                    <button onclick="window.adminSendGlobal()" class="adm-action-btn" style="background:#2ecc71;color:#000;">📢 PUBLISH TO ALL</button>
+                    <div id="adminGlobalMsgList" class="msg-list" style="margin-top:14px;max-height:260px;overflow-y:auto;"></div>
+                </div>
+
+                <!-- PRIVATE DM -->
+                <div id="admin-section-specific" class="admin-section" style="display:none;">
+                    <div class="adm-h3">✉️ Private Message</div>
+                    <input id="adminTargetUser" type="text" placeholder="Target username" oninput="window.adminLoadPrivateMsgs()" class="adm-input">
+                    <textarea id="adminSpecificText" placeholder="Private message text..." class="adm-textarea"></textarea>
+                    <button onclick="window.adminSendSpecific()" class="adm-action-btn" style="background:#3498db;color:#fff;">✉️ SEND TO PLAYER</button>
+                    <div id="adminPrivateMsgList" class="msg-list" style="margin-top:14px;max-height:220px;overflow-y:auto;"></div>
+                </div>
+
+                <!-- ROOMS -->
+                <div id="admin-section-rooms" class="admin-section" style="display:none;">
+                    <div class="adm-h3">🏠 Multiplayer Rooms</div>
+                    <div style="display:flex;gap:8px;margin-bottom:10px;">
+                        <button onclick="window.adminLoadRooms()" style="background:#2ecc71;color:#000;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:bold;">🔄 Refresh</button>
+                        <button onclick="window.adminCleanRooms()" style="background:#e74c3c;color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:bold;">🗑 Clean Empty</button>
+                    </div>
+                    <div style="overflow-x:auto;">
+                    <table class="adm-table">
+                        <thead><tr><th>Room</th><th>Players</th><th>Last Active</th><th>Action</th></tr></thead>
+                        <tbody id="adminRoomTableBody"></tbody>
+                    </table>
+                    </div>
+                    <div id="adminRoomStatus" class="adm-status"></div>
+                </div>
+
+                <!-- QUIZ -->
+                <div id="admin-section-quiz" class="admin-section" style="display:none;">
+                    <div class="adm-h3">🧠 Quiz Management</div>
+                    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+                        <button onclick="window.adminLoadQuizLb()" style="background:#8e44ad;color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:bold;">📊 Leaderboard</button>
+                        <button onclick="window.adminResetQuizWeek()" style="background:#e74c3c;color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:bold;">🔄 Reset This Week</button>
+                    </div>
+                    <div style="background:rgba(142,68,173,.1);border:1px solid rgba(142,68,173,.3);border-radius:10px;padding:14px;margin-bottom:12px;">
+                        <div style="font-size:.75rem;color:#8e44ad;letter-spacing:1px;margin-bottom:8px;font-family:Teko,sans-serif;">📝 SET WEEKLY SPECIAL QUESTION</div>
+                        <input id="aqSubject" type="text" placeholder="Subject (Maths / Science)" class="adm-input" style="margin:3px 0;">
+                        <input id="aqQuestion" type="text" placeholder="Question text" class="adm-input" style="margin:3px 0;">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+                            <input id="aqOpt0" type="text" placeholder="Option A" class="adm-input" style="margin:2px 0;">
+                            <input id="aqOpt1" type="text" placeholder="Option B" class="adm-input" style="margin:2px 0;">
+                            <input id="aqOpt2" type="text" placeholder="Option C" class="adm-input" style="margin:2px 0;">
+                            <input id="aqOpt3" type="text" placeholder="Option D" class="adm-input" style="margin:2px 0;">
+                        </div>
+                        <select id="aqAns" class="adm-input" style="margin:4px 0;">
+                            <option value="0">Correct: A</option><option value="1">Correct: B</option>
+                            <option value="2">Correct: C</option><option value="3">Correct: D</option>
+                        </select>
+                        <button onclick="window.adminSetAiQuestion()" style="width:100%;background:#8e44ad;color:#fff;border:none;padding:10px;border-radius:8px;cursor:pointer;font-weight:bold;margin-top:6px;">✅ SET FOR THIS WEEK</button>
+                    </div>
+                    <div id="adminQuizLb" style="max-height:260px;overflow-y:auto;"></div>
+                    <div id="adminQuizStatus" class="adm-status"></div>
+                </div>
+
+                <!-- ONLINE -->
+                <div id="admin-section-online" class="admin-section" style="display:none;">
+                    <div class="adm-h3">🟢 Online Users</div>
+                    <button onclick="window.adminLoadOnline()" style="background:#2ecc71;color:#000;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;font-weight:bold;margin-bottom:10px;">🔄 Refresh</button>
+                    <div id="adminOnlineList" style="max-height:380px;overflow-y:auto;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- LEADERBOARD                                                  -->
+    <!-- ============================================================ -->
+    <div id="section-leaderboard" class="spa-section hidden-right"
+        style="background:linear-gradient(135deg,#0a0a18,#0f0c29,#1a0a2e);">
+        <div class="lb-inner">
+            <button class="lb-back-btn" onclick="window.MapsTo('section-hub','left')"
+                style="align-self:flex-start;margin-bottom:16px;">&#8592; Back</button>
+            <div style="text-align:center;margin-bottom:18px;">
+                <h1
+                    style="font-family:Teko,sans-serif;font-size:3rem;color:#ffd700;filter:drop-shadow(0 0 12px rgba(255,215,0,0.4));margin:0;letter-spacing:4px;">
+                    🏆 LEADERBOARD</h1>
+                <div style="color:rgba(255,255,255,0.3);font-size:0.75rem;letter-spacing:2px;margin-top:2px;">TOP
+                    PLAYERS — ARCADE HUB</div>
+            </div>
+            <div class="board-container"
+                style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;width:100%;max-width:480px;padding:18px;">
+                <div class="game-selector"
+                    style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:18px;">
+                    <button class="lb-game-tab" onclick="window.lbSelectGame('flappy_highscore',this)">🐦 Flappy</button>
+                    <button class="lb-game-tab" onclick="window.lbSelectGame('dino_highscore',this)">🦕 Dino</button>
+                    <button class="lb-game-tab" onclick="window.lbSelectGame('snake_highscore',this)">🐍 Snake</button>
+                    <button class="lb-game-tab" onclick="window.lbSelectGame('pacman_highscore',this)">ᗧ Pac-Man</button>
+                    <button class="lb-game-tab" onclick="window.lbSelectGame('__quiz__',this)" style="background:linear-gradient(45deg,rgba(108,52,131,.4),rgba(41,128,185,.3));border-color:rgba(108,52,131,.5);color:#bb8fce;">🧠 Quiz</button>
+                </div>
+                <div id="lb-loading"
+                    style="text-align:center;color:rgba(255,255,255,0.3);padding:20px;font-size:0.85rem;letter-spacing:1px;">
+                    TAP A GAME TO VIEW RANKINGS</div>
+                <div id="lb-score-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PROFILE SECTION                                              -->
+    <!-- ============================================================ -->
+    <div id="section-profile" class="spa-section hidden-right">
+        <div class="profile-inner">
+            <button class="profile-back-btn" onclick="window.MapsTo('section-hub','left')">← Back</button>
+            <div class="prof-avatar-card" id="my-profile-card">
+                <div class="prof-avatar-big" id="my-prof-avatar">?</div>
+                <div class="prof-display-name" id="my-prof-name">Loading...</div>
+                <div class="prof-meta-row">
+                    <div class="prof-meta-item">
+                        <div class="prof-meta-val" id="my-friends-count">—</div>
+                        <div class="prof-meta-label">Friends</div>
+                    </div>
+                    <div class="prof-meta-item">
+                        <div class="prof-meta-val" id="my-rank-display">—</div>
+                        <div class="prof-meta-label">Best Score</div>
+                    </div>
+                    <div class="prof-meta-item">
+                        <div class="prof-meta-val" id="my-games-played">—</div>
+                        <div class="prof-meta-label">Games Played</div>
+                    </div>
+                </div>
+                <div class="prof-last-login" id="my-prof-lastlogin"></div>
+                <div id="my-level-badge"
+                    style="margin-top:8px;font-size:0.85rem;color:rgba(255,255,255,0.5);letter-spacing:1px;"></div>
+            </div>
+            <div class="prof-bio-card">
+                <div class="prof-bio-title">💬 About Me</div>
+                <div id="my-bio-display" class="prof-bio-text empty">Tap to add a bio...</div>
+                <textarea class="prof-bio-textarea" id="my-bio-input" maxlength="100"
+                    placeholder="Write something about yourself... (max 100 characters)" oninput="window.updateBioCount()"
+                    style="display:none;"></textarea>
+                <div id="my-bio-error" class="prof-bio-error"></div>
+                <div class="prof-bio-controls" id="my-bio-controls" style="display:none;">
+                    <span class="prof-bio-count"><span id="my-bio-wordcount">0</span>/100 chars</span>
+                    <button class="prof-bio-save" onclick="window.saveBio()">SAVE</button>
+                </div>
+            </div>
+            <div class="prof-stats-grid" id="my-prof-stats"></div>
+            <div class="prof-medals-card" id="my-medals-card" style="display:none;">
+                <div class="prof-medals-title">🏅 QUIZ MEDALS</div>
+                <div class="prof-medals-row" id="my-medals-row"></div>
+            </div>
+            <div class="prof-card">
+                <div class="prof-card-title">⚙️ Account</div>
+                <button class="prof-action-btn" onclick="window.openUnameChangeModal()">✏️ Request Username Change <span
+                        style="font-size:0.7rem;color:rgba(255,255,255,0.3);float:right;">Once per 7
+                        days</span></button>
+                <div id="prof-cooldown-msg"></div>
+            </div>
+            <div class="prof-card">
+                <div class="prof-card-title">🔍 Search Player</div>
+                <div class="prof-search-wrap">
+                    <input class="prof-search-input" id="prof-search-input" placeholder="Search players..."
+                        oninput="window.searchUserProfile()" autocomplete="off">
+                    <button class="prof-search-btn" id="prof-search-btn" onclick="window.searchUserProfile()">GO</button>
+                </div>
+                <div id="prof-search-result"></div>
+            </div>
+        </div>
+    </div>
+    <!-- USERNAME CHANGE MODAL -->
+    <div id="uname-change-overlay" onclick="window.closeUnameModal()">
+        <div id="uname-change-box" onclick="event.stopPropagation()">
+            <div class="uc-title">✏️ Request Username Change</div>
+            <div class="uc-sub">Enter desired new username. Admin will review and change it manually. Once per 7 days
+                only.</div>
+            <input class="uc-input" id="uc-new-name" placeholder="New username (letters & numbers only)" maxlength="20">
+            <input class="uc-input" id="uc-reason" placeholder="Reason (optional)">
+            <div class="uc-status" id="uc-status"></div>
+            <div class="uc-btns">
+                <button class="uc-btn uc-btn-cancel" onclick="window.closeUnameModal()">Cancel</button>
+                <button class="uc-btn uc-btn-send" onclick="window.submitUnameRequest()">Send Request</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- CHAT                                                         -->
+    <!-- ============================================================ -->
+    <div id="section-chat" class="spa-section hidden-right"
+        style="background:#111;display:flex;height:100vh;overflow:hidden;">
+        <div class="sidebar">
+            <!-- Notification toggle -->
+            <div class="notif-bar" id="chat-notif-bar">
+                <span class="notif-bar-label">
+                    <span>🔔</span>
+                    <span id="notif-bar-text">Turn on/off notifications</span>
+                </span>
+                <label class="tog-wrap" title="Toggle notifications">
+                    <input type="checkbox" id="notif-master-chk" onchange="window.handleNotifToggle(this)">
+                    <span class="tog-slider"></span>
+                </label>
+            </div>
+            <button class="btn-back-chat" onclick="window.MapsTo('section-hub','left')">&#8592; Back</button>
+            <div class="user-status" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">Your Username:
+                <span id="chat-display-username">...</span><span class="ping-badge ping-good" id="chat-ping-badge"><span
+                        class="ping-dot"></span><span id="chat-ping-ms">--</span>ms</span></div>
+            <div class="add-friend-box">
+                <input type="text" id="friendInput" class="search-input" placeholder="Send Friend Request">
+                <button class="chat-btn btn-add" onclick="window.addFriend()">+</button>
+            </div>
+            <p id="add-status" style="font-size:.8rem;color:#aaa;margin-top:-10px;"></p>
+            <div id="freq-incoming-wrap" style="display:none;">
+                <div class="freq-section-title">📥 Friend Requests</div>
+                <div id="freq-incoming-list"></div>
+            </div>
+            <div class="freq-section-title" style="margin-top:6px;">👥 Friends</div>
+            <div id="friends-list">
+                <p style="color:#666;padding:10px;">Loading friends...</p>
+            </div>
+        </div>
+        <div class="chat-area">
+            <div class="chat-header">
+                <button onclick="window.closeChatPanel()" id="mobile-back-chat">&#8592;</button>
+                <span id="chat-title">Select a friend</span>
+            </div>
+            <div id="chat-messages"></div>
+            <div class="input-area">
+                <input type="text" id="msgInput" class="chat-input" placeholder="Select friend to type..." disabled
+                    onkeypress="window.handleChatKey(event)">
+                <button class="btn-send" onclick="window.sendMessage()" id="sendBtn" disabled>SEND</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- GAME FRAMES                                                  -->
+    <!-- ============================================================ -->
+    <!-- Each game iframe now uses src="games/name.html" -->
+    <div id="section-game-dino" class="spa-section hidden-right game-frame">
+        <div class="game-section-wrapper">
+            <iframe allow="fullscreen; screen-orientation" id="iframe-dino" src="games/dino.html" sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div id="section-game-flappy" class="spa-section hidden-right game-frame">
+        <div class="game-section-wrapper">
+            <iframe id="iframe-flappy" src="games/flappy.html" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
+    </div>
+    <div id="section-game-pacman" class="spa-section hidden-right game-frame">
+        <div class="game-section-wrapper">
+            <iframe id="iframe-pacman" src="games/pacman.html" sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock"></iframe>
+        </div>
+    </div>
+    <div id="section-game-car" class="spa-section hidden-right game-frame">
+        <div class="game-section-wrapper">
+            <iframe id="iframe-car" src="games/car.html" sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div id="section-game-snake" class="spa-section hidden-right game-frame">
+        <div class="game-section-wrapper">
+            <iframe id="iframe-snake" src="games/snake.html" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
+    </div>
+    <div id="section-game-fair" class="spa-section hidden-right game-frame">
+        <div class="game-section-wrapper" style="background:linear-gradient(135deg,#0f0c29,#1a0a2e);">
+            <div style="position:relative;width:100%;height:100%;display:flex;flex-direction:column;">
+                <!-- Header -->
+                <div style="padding:16px 20px;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,243,255,0.2);z-index:10;flex-shrink:0;">
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+                        <div>
+                            <h2 style="margin:0;font-family:'Teko',sans-serif;font-size:1.8rem;color:#00f3ff;letter-spacing:2px;">📋 Fair Copies</h2>
+                            <p style="margin:0;font-size:0.8rem;color:rgba(255,255,255,0.5);">Official exam copies &amp; study materials</p>
+                        </div>
+                        <a href="https://drive.google.com/drive/folders/1vGp2vyRvAAFxzF4cfrA4qHtGTjLlDrS9"
+                            target="_blank" rel="noopener noreferrer"
+                            style="background:rgba(0,243,255,0.1);border:1px solid #00f3ff;color:#00f3ff;padding:6px 18px;border-radius:30px;font-family:'Teko',sans-serif;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
+                            🧭 Open in Drive
+                        </a>
+                    </div>
+                </div>
+                <!-- File Browser -->
+                <div id="fair-custom-container" style="flex:1;overflow-y:auto;padding:20px;-webkit-overflow-scrolling:touch;">
+                    <div id="fair-loader" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:200px;gap:0;">
+                        <div class="fair-ring-wrap">
+                            <svg viewBox="0 0 100 100" class="fair-ring">
+                                <circle cx="50" cy="50" r="42" class="fair-ring-bg"/>
+                                <circle cx="50" cy="50" r="42" class="fair-ring-fg" id="fair-ring-fg"/>
+                            </svg>
+                            <div class="fair-ring-pct" id="fair-pct-text">0%</div>
+                        </div>
+                        <p class="fair-load-label" id="fair-load-label">Connecting...</p>
+                    </div>
+                    <div id="fair-file-list" style="display:none;"></div>
+                    <div id="fair-error" style="display:none;text-align:center;color:#ff3366;padding:40px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="section-game-rps" class="spa-section hidden-right game-frame">
+        <div class="game-section-wrapper">
+            <iframe id="iframe-rps" src="games/rps.html" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
+    </div>
+    <div id="section-game-rpsrand" class="spa-section hidden-right game-frame">
+        <div class="game-section-wrapper">
+            <iframe id="iframe-rpsrand" src="games/rpsrand.html" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
+    </div>
+    <div id="section-game-ttt" class="spa-section hidden-right game-frame">
+        <div class="game-section-wrapper">
+            <iframe id="iframe-ttt" src="games/ttt.html" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
+    </div>
+    <div id="section-game-multittt" class="spa-section hidden-right game-frame">
+        <div class="game-section-wrapper">
+            <iframe id="iframe-multittt" src="games/multittt.html" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
+    </div>
+    <div id="section-game-multicar" class="spa-section hidden-right game-frame">
+        <div class="game-section-wrapper">
+            <iframe id="iframe-multicar" src="games/multicar.html" sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div id="section-game-arcadecraft" class="spa-section hidden-right game-frame">
+        <div class="game-section-wrapper">
+            <iframe id="iframe-arcadecraft" src="games/arcadecraft.html" sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- THANK YOU SECTION                                            -->
+    <!-- ============================================================ -->
+    <div id="section-thankyou" class="spa-section hidden-right" style="background:#0a0a0c;">
+        <div style="height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;">
+            <div id="ty-container"
+                style="text-align:center;background:rgba(255,255,255,0.03);padding:50px;border-radius:20px;border:2px solid #00f3ff;box-shadow:0 0 30px #00f3ff,inset 0 0 15px rgba(0,243,255,0.1);max-width:500px;width:90%;animation:tyGlow 2s infinite alternate;font-family:'Teko',sans-serif;">
+                <h1 style="font-size:4rem;margin:0;color:#00f3ff;text-shadow:0 0 10px #00f3ff;letter-spacing:3px;">
+                    MESSAGE SENT</h1>
+                <p style="font-size:1.5rem;color:#ccc;margin:20px 0;">Status: <span id="ty-status"
+                        style="color:#ff0055;font-weight:bold;text-transform:uppercase;">Sending...</span></p>
+                <p id="ty-msg" style="font-size:1.2rem;color:#aaa;">Your message is sending...</p>
+                <button onclick="window.tyGoHome()"
+                    style="display:inline-block;margin-top:30px;padding:10px 30px;background:#ff0055;color:white;border:none;font-family:'Teko',sans-serif;font-size:1.8rem;border-radius:5px;cursor:pointer;transition:0.3s;box-shadow:0 0 15px #ff0055;">BACK
+                    TO HOME</button>
+                <div style="margin-top:20px;font-size:1rem;color:#666;font-family:'Segoe UI',sans-serif;">Automatic
+                    redirect in <span id="ty-seconds" style="color:#00f3ff;font-weight:bold;">10</span>s</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- QUIZ SECTION                                                 -->
+    <!-- ============================================================ -->
+    <div id="section-quiz" class="spa-section hidden-right">
+        <div class="quiz-inner">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+                <button class="quiz-back-btn" onclick="window.MapsTo('section-hub','left')">← Back</button>
+                <div id="quiz-week-info" style="font-size:.72rem;color:rgba(255,255,255,.4);letter-spacing:1px;"></div>
+            </div>
+            <!-- LOBBY -->
+            <div id="quiz-lobby">
+                <div class="quiz-lobby-card">
+                    <div class="quiz-title-big">WEEKLY QUIZ</div>
+                    <div class="quiz-subtitle">CLASS 8 · D.A.V. SCHOOL</div>
+                    <div class="quiz-week-badge" id="quiz-week-badge">📅 Loading...</div>
+                    <div class="quiz-info-grid">
+                        <div class="quiz-info-item"><div class="quiz-info-val">20</div><div class="quiz-info-lbl">QUESTIONS</div></div>
+                        <div class="quiz-info-item"><div class="quiz-info-val">60s</div><div class="quiz-info-lbl">PER QUESTION</div></div>
+                        <div class="quiz-info-item"><div class="quiz-info-val" id="quiz-lobby-best">—</div><div class="quiz-info-lbl">YOUR BEST</div></div>
+                        <div class="quiz-info-item"><div class="quiz-info-val" id="quiz-lobby-rank">—</div><div class="quiz-info-lbl">YOUR RANK</div></div>
+                    </div>
+                    <button class="quiz-start-btn" id="quiz-start-btn" onclick="window.quizOpenRulesModal()">— START QUIZ</button>
+                    <div id="quiz-already-played" style="display:none;margin-top:10px;background:rgba(0,243,255,.08);border:1px solid rgba(0,243,255,.2);border-radius:10px;padding:10px;font-size:.82rem;color:#00f3ff;text-align:center;">
+                        ✅ You already played this week! Your score is saved. Come back next Monday for a new quiz.
+                    </div>
+                </div>
+                <div class="quiz-ban-card" id="quiz-ban-card" style="display:none;">
+                    <div style="font-size:3rem;">🚫</div>
+                    <div class="quiz-ban-title">QUIZ BANNED</div>
+                    <div style="font-size:.8rem;color:rgba(255,255,255,.5);margin:8px 0;">Cheating detected — access suspended</div>
+                    <div class="quiz-ban-timer" id="quiz-ban-timer">—</div>
+                    <div class="quiz-ban-sub">Ban lifts automatically. Each ban adds +1 min.</div>
+                </div>
+                <div class="quiz-lb-card">
+                    <div class="quiz-lb-title">🏆 THIS WEEK'S TOP</div>
+                    <div id="quiz-lb-list"><div style="text-align:center;padding:14px;color:rgba(255,255,255,.3);font-size:.82rem;">Loading...</div></div>
+                    <div class="quiz-reset-info" id="quiz-reset-info"></div>
+                </div>
+                <div class="quiz-rules-card">
+                    <div class="quiz-rules-title">📋 QUICK RULES</div>
+                    <div class="quiz-rule"><span>⏱️</span><span>60s per question · Tab switch = ban · One attempt/week</span></div>
+                    <div class="quiz-rule"><span>🏆</span><span>Fastest time wins · Top 3 get medals on profile</span></div>
+                    <div class="quiz-rule"><span>🔄</span><span>Resets every Monday · Same Qs for everyone</span></div>
+                </div>
+            </div>
+            <!-- GAME -->
+            <div id="quiz-game" style="display:none;flex-direction:column;gap:0;">
+                <div class="quiz-top-bar">
+                    <div class="quiz-progress-wrap"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%;"></div></div>
+                    <div class="quiz-q-counter" id="quiz-q-counter">1/20</div>
+                    <div class="quiz-timer-ring">
+                        <svg width="52" height="52" viewBox="0 0 52 52">
+                            <circle fill="none" stroke="rgba(255,255,255,.1)" stroke-width="4" cx="26" cy="26" r="22"/>
+                            <circle id="quiz-timer-circle" fill="none" stroke="#00f3ff" stroke-width="4" stroke-linecap="round"
+                                cx="26" cy="26" r="22" stroke-dasharray="138.2" stroke-dashoffset="0"/>
+                        </svg>
+                        <div class="quiz-timer-num" id="quiz-timer-num">60</div>
+                    </div>
+                </div>
+                <div id="quiz-subject-tag" class="quiz-subject-tag">MATHS</div>
+                <div class="quiz-question-card">
+                    <div class="quiz-question-text" id="quiz-q-text"></div>
+                </div>
+                <div class="quiz-options" id="quiz-opts"></div>
+                <button class="quiz-next-btn" id="quiz-next-btn" onclick="window.quizNext()">NEXT →</button>
+            </div>
+            <!-- RESULTS -->
+            <div id="quiz-result" style="display:none;flex-direction:column;gap:14px;">
+                <div class="quiz-result-hero">
+                    <div style="font-size:4rem;margin-bottom:6px;" id="quiz-res-icon">🎉</div>
+                    <div class="quiz-result-score" id="quiz-res-score">—/20</div>
+                    <div style="color:rgba(255,255,255,.5);font-size:.8rem;letter-spacing:2px;margin:4px 0 14px;">QUESTIONS CORRECT</div>
+                    <div class="quiz-stat-row">
+                        <div class="quiz-stat"><div class="quiz-stat-v" id="quiz-res-time">—</div><div class="quiz-stat-l">TOTAL TIME</div></div>
+                        <div class="quiz-stat"><div class="quiz-stat-v" id="quiz-res-avg">—</div><div class="quiz-stat-l">AVG / QUESTION</div></div>
+                        <div class="quiz-stat"><div class="quiz-stat-v" id="quiz-res-rank">—</div><div class="quiz-stat-l">YOUR RANK</div></div>
+                    </div>
+                </div>
+                <div class="quiz-lb-card">
+                    <div class="quiz-lb-title">🏆 UPDATED LEADERBOARD</div>
+                    <div id="quiz-result-lb"></div>
+                </div>
+                <button class="quiz-play-again-btn" onclick="window.quizShowLobby()">← Back to Lobby</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ANTI-CHEAT OVERLAY                                           -->
+    <!-- ============================================================ -->
+    <div id="quiz-cheat-overlay">
+        <div class="qco-icon">🚨</div>
+        <div class="qco-title">CHEAT DETECTED</div>
+        <div class="qco-sub" id="qco-sub">You left the quiz tab. The quiz has been cancelled.</div>
+        <div id="qco-ban-info" style="font-family:Teko,sans-serif;font-size:1.1rem;color:#f39c12;margin:4px 0;"></div>
+        <button class="qco-btn" id="qco-btn" onclick="window.quizDismissCheat()" disabled>OK, I UNDERSTAND (<span id="qco-sec">3</span>)</button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MODALS & OVERLAYS (confirm, password change, profile card, etc.) -->
+    <!-- ============================================================ -->
+    <!-- confirm-overlay -->
+    <div id="confirm-overlay">
+        <div id="confirm-box">
+            <div id="confirm-icon">⚠️</div>
+            <div id="confirm-msg">Are you sure?</div>
+            <div class="conf-btns">
+                <button class="conf-btn conf-btn-yes" id="conf-yes">YES</button>
+                <button class="conf-btn conf-btn-no" id="conf-no">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- password change overlay -->
+    <div id="chgpass-overlay">
+        <div id="chgpass-box">
+            <h3>🔐 CHANGE PASSWORD</h3>
+            <p class="cp-sub" id="cp-step-indicator">STEP 1 OF 2 — VERIFY IDENTITY</p>
+            <p id="cp-error"></p>
+            <div id="cp-step1-fields">
+                <div class="cp-field-wrap">
+                    <label>Current Password</label>
+                    <input class="cp-input" type="password" id="cp-old-input" placeholder="Enter your current password"
+                        autocomplete="current-password" onkeypress="if(event.key==='Enter')window.cpHandleStep()">
+                    <img class="cp-eye" id="cp-eye-old" src="" onclick="window.cpToggleEye('cp-old-input','cp-eye-old')">
+                </div>
+            </div>
+            <div id="cp-step2-fields">
+                <div class="cp-field-wrap">
+                    <label>New Password <span style="color:#888;font-size:.75rem;">(min 4 chars)</span></label>
+                    <input class="cp-input" type="password" id="cp-new-input" placeholder="Enter new password"
+                        autocomplete="new-password" onkeypress="if(event.key==='Enter')window.cpHandleStep()">
+                    <img class="cp-eye" id="cp-eye-new" src="" onclick="window.cpToggleEye('cp-new-input','cp-eye-new')">
+                </div>
+                <div class="cp-field-wrap">
+                    <label>Confirm New Password</label>
+                    <input class="cp-input" type="password" id="cp-conf-input" placeholder="Confirm new password"
+                        autocomplete="new-password" onkeypress="if(event.key==='Enter')window.cpHandleStep()">
+                    <img class="cp-eye" id="cp-eye-conf" src="" onclick="window.cpToggleEye('cp-conf-input','cp-eye-conf')">
+                </div>
+            </div>
+            <div class="cp-btn-row">
+                <button class="cp-btn cp-btn-cancel" onclick="window.closeChangePass()">Cancel</button>
+                <button class="cp-btn cp-btn-confirm" id="cp-confirm-btn" onclick="window.cpHandleStep()">Verify →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- forgot password modal -->
+    <div id="forgot-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
+        <div style="background:#0d0b22;border:1px solid rgba(0,243,255,.3);border-radius:20px;padding:28px;max-width:380px;width:100%;">
+            <h2 style="color:#00f3ff;letter-spacing:3px;margin:0 0 6px;">🔑 RESET PASSWORD</h2>
+            <p id="forgot-step-desc" style="color:rgba(255,255,255,.5);font-size:.85rem;margin:0 0 18px;">Enter your email to receive a reset code.</p>
+            <div id="forgot-step1">
+                <input id="forgot-email" type="email" placeholder="Your registered email" autocomplete="email"
+                    style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(0,243,255,.3);background:rgba(0,0,0,.3);color:#fff;font-size:1rem;margin-bottom:10px;box-sizing:border-box;">
+                <button onclick="window.forgotSendCode()"
+                    style="width:100%;padding:12px;border:none;border-radius:10px;background:linear-gradient(90deg,#00f3ff,#0066ff);color:#000;font-family:Teko,sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:2px;cursor:pointer;">SEND CODE</button>
+            </div>
+            <div id="forgot-step2" style="display:none;">
+                <input id="forgot-code" type="text" placeholder="6-digit code from email" maxlength="6" inputmode="numeric"
+                    style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(0,243,255,.3);background:rgba(0,0,0,.3);color:#fff;font-size:1.2rem;letter-spacing:6px;text-align:center;margin-bottom:10px;box-sizing:border-box;">
+                <input id="forgot-newpass" type="password" placeholder="New password (min 3 chars)"
+                    style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(0,243,255,.3);background:rgba(0,0,0,.3);color:#fff;font-size:1rem;margin-bottom:10px;box-sizing:border-box;">
+                <button onclick="window.forgotVerifyCode()"
+                    style="width:100%;padding:12px;border:none;border-radius:10px;background:linear-gradient(90deg,#00f3ff,#0066ff);color:#000;font-family:Teko,sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:2px;cursor:pointer;">RESET PASSWORD</button>
+            </div>
+            <div id="forgot-status" style="margin-top:10px;font-size:.85rem;text-align:center;min-height:18px;"></div>
+            <button onclick="window.closeForgotPassword()"
+                style="width:100%;padding:10px;border:1px solid rgba(255,255,255,.15);border-radius:10px;background:transparent;color:rgba(255,255,255,.5);font-family:Teko,sans-serif;font-size:1rem;cursor:pointer;margin-top:10px;">CANCEL</button>
+        </div>
+    </div>
+
+    <!-- profile card overlay -->
+    <div id="profile-card-overlay" onclick="window.closeProfileCard()">
+        <div id="profile-card" onclick="event.stopPropagation()">
+            <div class="pc-avatar" id="pc-avatar">?</div>
+            <div class="pc-username" id="pc-username">Loading...</div>
+            <div class="pc-scores" id="pc-scores"></div>
+            <div class="pc-last-login" id="pc-last-login"></div>
+            <button class="pc-close-btn" onclick="window.closeProfileCard()">✕ CLOSE</button>
+        </div>
+    </div>
+
+    <!-- rank bar for leaderboard -->
+    <div id="lb-my-rank-bar">
+        <span class="lb-my-rank-label">YOUR RANK</span>
+        <span class="lb-my-rank-info" id="lb-my-rank-info">Not ranked</span>
+        <span class="lb-my-rank-score" id="lb-my-rank-score"></span>
+    </div>
+
+    <!-- offline banner -->
+    <div id="offline-banner"
+        style="display:none;position:fixed;top:0;left:0;right:0;z-index:999999;background:rgba(231,76,60,0.95);color:white;text-align:center;padding:10px 16px;font-size:0.9rem;font-family:'Segoe UI',sans-serif;box-shadow:0 2px 20px rgba(231,76,60,0.5);">
+        ⚡ You're offline — Multiplayer &amp; scores won't sync. <u style="cursor:pointer;text-decoration:underline;"
+            onclick="location.reload()">Tap to retry.</u>
+    </div>
+
+    <!-- invite popup -->
+    <div id="invite-popup">
+        <div class="inv-header">
+            <span class="inv-icon" id="inv-icon"></span>
+            <span class="inv-title" id="inv-title"></span>
+        </div>
+        <div class="inv-msg" id="inv-msg"></div>
+        <div class="inv-btns">
+            <button class="inv-btn inv-btn-accept" id="inv-accept">✓ JOIN</button>
+            <button class="inv-btn inv-btn-reject" id="inv-reject">✗ DECLINE</button>
+        </div>
+        <div id="inv-progress-wrap">
+            <div id="inv-progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- notification container -->
+    <div id="notify-container"></div>
+
+    <!-- in-game notification badge -->
+    <div id="in-game-notif-badge" onclick="window._goBackFromGameNotif()">🔔 <span id="in-game-notif-text">New message!</span>
+    </div>
+
+    <!-- score sync toast -->
+    <div id="score-sync-toast"></div>
+
+    <!-- rotate overlay -->
+    <div id="rotate-overlay" onclick="window.handleMobileRotation();">
+        <div class="rotate-card">
+            <div class="rotate-icon">
+                <div class="phone-icon"></div>
+            </div>
+            <div class="rotate-title">TAP TO ROTATE</div>
+            <div class="rotate-sub">For the best experience, please rotate your device to landscape</div>
+            <button class="tap-rotate-btn">🔄 Tap to Rotate</button>
+        </div>
+    </div>
+
+    <!-- admin input modal -->
+    <div class="adm-input-overlay" id="adm-input-overlay">
+        <div class="adm-input-box">
+            <div class="adm-input-title" id="adm-input-title">INPUT</div><input class="adm-input-field"
+                id="adm-input-field" type="text" autocomplete="off" />
+            <div class="adm-input-btns"><button class="adm-ok-btn" id="adm-ok-btn">OK</button><button
+                    class="adm-cancel-btn" id="adm-cancel-btn">CANCEL</button></div>
+        </div>
+    </div>
+
+    <!-- Matrix overlay for admin -->
+    <div id="matrix-overlay">
+        <canvas id="matrix-canvas"></canvas>
+        <div id="matrix-center-text">⚠ UNAUTHORIZED ACCESS ⚠<br><span
+                style="font-size:1.2rem;color:#00cc33;">INITIALIZING ADMIN PORTAL...</span></div>
+    </div>
+
+    <!-- admin login overlay -->
+    <div id="admin-login-overlay">
+        <div id="admin-login-box">
+            <h2>⛔ ADMIN ACCESS</h2>
+            <p class="al-sub">ENTER ADMINISTRATOR CREDENTIALS</p>
+            <p id="al-error"></p>
+            <div class="al-field">
+                <input class="al-input" type="password" id="al-pass-input" placeholder="Enter admin password..."
+                    autocomplete="off" onkeypress="if(event.key==='Enter')window.alVerify()">
+                <img class="al-eye" id="al-eye" src="" onclick="window.alToggleEye()">
+            </div>
+            <button class="al-btn" onclick="window.alVerify()">AUTHENTICATE</button>
+            <span class="al-cancel" onclick="window.alClose()">← Back to Hub</span>
+        </div>
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- SMART LOADER — loads Firebase, CSS, and JS sequentially       -->
+    <!-- ============================================================ -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <script>
+        (function() {
+            'use strict';
+
+            var CSS_FILES = ['css/style.css'];
+            var JS_FILES = [
+                'js/config.js',
+                'js/utils.js',
+                'js/auth.js',
+                'js/main.js',
+                'js/hub.js',
+                'js/chat.js',
+                'js/leaderboard.js',
+                'js/profile.js',
+                'js/admin.js',
+                'js/fair.js',
+                'js/quiz.js'
+            ];
+
+            var total = 1 + CSS_FILES.length + JS_FILES.length;
+            var loaded = 0;
+
+            function updateProgress(pct, text) {
+                var bar = document.getElementById('boot-bar');
+                var sub = document.getElementById('boot-sub');
+                var pctEl = document.getElementById('boot-pct');
+                if (bar) bar.style.width = Math.min(100, pct) + '%';
+                if (sub) sub.innerText = text || 'Loading...';
+                if (pctEl) pctEl.innerText = Math.round(Math.min(100, pct)) + '%';
+            }
+
+            function loadScript(src) {
+                return new Promise(function(resolve, reject) {
+                    var s = document.createElement('script');
+                    s.src = src;
+                    s.onload = function() {
+                        loaded++;
+                        var pct = (loaded / total) * 100;
+                        updateProgress(pct, 'Loaded: ' + src);
+                        resolve();
+                    };
+                    s.onerror = function() {
+                        loaded++;
+                        var pct = (loaded / total) * 100;
+                        updateProgress(pct, '❌ Failed: ' + src);
+                        console.warn('Failed to load: ' + src);
+                        resolve(); // continue anyway
+                    };
+                    document.head.appendChild(s);
+                });
+            }
+
+            function loadCSS(href) {
+                return new Promise(function(resolve, reject) {
+                    var l = document.createElement('link');
+                    l.rel = 'stylesheet';
+                    l.href = href;
+                    l.onload = function() {
+                        loaded++;
+                        var pct = (loaded / total) * 100;
+                        updateProgress(pct, 'Loaded: ' + href);
+                        resolve();
+                    };
+                    l.onerror = function() {
+                        loaded++;
+                        var pct = (loaded / total) * 100;
+                        updateProgress(pct, '❌ CSS failed: ' + href);
+                        resolve();
+                    };
+                    document.head.appendChild(l);
+                });
+            }
+
+            async function boot() {
+                updateProgress(5, 'Initializing...');
+
+                // Wait for Firebase
+                await new Promise(function(resolve) {
+                    if (typeof firebase !== 'undefined' && firebase.apps.length > 0) {
+                        resolve();
+                        return;
+                    }
+                    var check = setInterval(function() {
+                        if (typeof firebase !== 'undefined' && firebase.apps.length > 0) {
+                            clearInterval(check);
+                            resolve();
+                        }
+                    }, 100);
+                    setTimeout(function() { clearInterval(check);
+                        resolve(); }, 5000);
+                });
+                loaded++;
+                updateProgress((loaded / total) * 100, 'Firebase ready');
+
+                // Load CSS
+                for (var css of CSS_FILES) {
+                    await loadCSS(css);
+                }
+
+                // Load JS
+                for (var js of JS_FILES) {
+                    await loadScript(js);
+                }
+
+                // All scripts loaded — call initApp
+                updateProgress(100, 'Ready!');
+                if (typeof window.initApp === 'function') {
+                    await window.initApp();
+                } else {
+                    console.warn('initApp not found. Check main.js loaded.');
+                }
+
+                // Hide loader after a small delay
+                setTimeout(function() {
+                    var ol = document.getElementById('loading-overlay');
+                    if (ol) {
+                        ol.classList.add('fade-out');
+                        setTimeout(function() { ol.style.display = 'none'; }, 400);
+                    }
+                }, 300);
+            }
+
+            boot().catch(function(err) {
+                console.error('Boot error:', err);
+                document.getElementById('boot-sub').innerHTML = '❌ Error loading. Refresh.';
+            });
+        })();
+    </script>
+</body>
+</html>
