@@ -469,7 +469,16 @@
             ctx.restore();
         }
 
-        function loop() {
+        let lastTime = 0;
+        const _FRAME_MS = 1000 / 60;
+
+        function loop(t = 0) {
+            requestAnimationFrame(loop);
+            if (document.hidden) return;
+            const dt = t - lastTime;
+            if (dt < _FRAME_MS - 0.1) return;
+            lastTime = t;
+
             if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
@@ -481,10 +490,9 @@
             bird.update();
             drawScore(); // on canvas — no DOM = no blink
             frames++;
-            requestAnimationFrame(loop);
         }
 
-        loop();
+        requestAnimationFrame(loop);
 
         // --- CLOUD SAVE FUNCTION ---
         // --- UPDATED CLOUD SAVE WITH DEBUG ALERTS ---

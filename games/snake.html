@@ -196,11 +196,16 @@
             else if (dir == "DOWN" && d != "UP") d = "DOWN";
         }
 
-        function gameLoop(timestamp) {
+        let lastTime = 0;
+        const _FRAME_MS = 1000 / 60;
+
+        function gameLoop(timestamp = 0) {
             if (!gameRunning) return;
-            if (!_lastTs) _lastTs = timestamp;
-            const dt = Math.min(timestamp - _lastTs, 50); // cap dt to avoid huge jumps after tab-switch/lag spikes
-            _lastTs = timestamp;
+            requestAnimationFrame(gameLoop);
+            if (document.hidden) return;
+            const dt = timestamp - lastTime;
+            if (dt < _FRAME_MS - 0.1) return;
+            lastTime = timestamp;
 
             ctx.fillStyle = "black";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -210,7 +215,7 @@
             if (d) {
                 moveTimer += dt;
                 if (moveTimer >= logicInterval) {
-                    moveTimer = 0;
+                    moveTimer %= logicInterval;
                     updateLogic();
                 }
             }

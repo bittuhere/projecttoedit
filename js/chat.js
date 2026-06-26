@@ -123,10 +123,17 @@ window.initChat = function() {
         el.className = 'status-sub status-orange'; }
 });
                 var cid = [myName, fn].sort().join('_');
-                var uRef = window.db.ref('chats/' + cid);
+                var uRef = window.db.ref('chats/' + cid).limitToLast(1);
                 uRef.on('value', function(cs) {
+                    if (window.isGameActive()) return;
                     var msgs = cs.val(),
-                        hasU = msgs ? Object.values(msgs).some(function(m) { return m.sender === fn && !m.read; }) : false;
+                        hasU = false;
+                    if (msgs) {
+                        var lr = parseInt(localStorage.getItem('lastReadChat') || '0');
+                        Object.values(msgs).forEach(function(m) {
+                            if (m.sender === fn && m.timestamp > lr) hasU = true;
+                        });
+                    }
                     var dot = document.getElementById('unread-' + fn);
                     if (dot) dot.style.display = (hasU && window.currentChatFriend !== fn) ? 'block' : 'none';
                 });

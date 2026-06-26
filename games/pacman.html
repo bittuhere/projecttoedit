@@ -537,12 +537,20 @@
             }
         }
 
-        function update() {
+        let lastTime = 0;
+        const _FRAME_MS = 1000 / 20;
+
+        function update(t = 0) {
             if (!gameRunning) return;   // stop duplicate loops / unwanted runs
             if (gameOver) return;
+            requestAnimationFrame(update);
+            if (document.hidden) return;
+            const dt = t - lastTime;
+            if (dt < _FRAME_MS - 0.1) return;
+            lastTime = t;
+
             move();
             draw();
-            setTimeout(update, 50); // 20 FPS
         }
 
         function draw() {
@@ -856,7 +864,8 @@
                 const newDir = directions[Math.floor(Math.random()*4)];
                 ghost.updateDirection(newDir);
             }
-            update();
+            lastTime = performance.now();
+            requestAnimationFrame(update);
         }
 
         function showGameOver() {
