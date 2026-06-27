@@ -163,9 +163,9 @@ window.gameMap = {
 window.openGame = function(k) {
     var s = window.gameMap[k];
     if (!s) return;
-    if (k === 'arcadecraft') {
-        // Fix: Use MapsTo instead of location.href to keep SPA context
-        window._setUserStatus('⛏️ Playing ArcadeCraft');
+    if (k === 'arcadecraft' || k === 'fair') {
+        // These are not iframe games, they are built-in sections
+        window._setUserStatus(window._gameStatusNames[k] || '🎮 In Game');
         window.MapsTo(s, 'right');
         return;
     }

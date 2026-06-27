@@ -1057,6 +1057,22 @@
     </div>
 
     <!-- ============================================================ -->
+    <!-- QUIZ RULES MODAL                                             -->
+    <!-- ============================================================ -->
+    <div id="quiz-rules-modal">
+        <div class="qrm-box">
+            <div class="qrm-title">QUIZ RULES</div>
+            <div class="qrm-sub">PLEASE READ CAREFULLY</div>
+            <div class="qrm-rule"><span class="qrm-rule-i">⏱️</span><span>You have 60 seconds per question.</span></div>
+            <div class="qrm-rule"><span class="qrm-rule-i">🚫</span><span>Tab switching or leaving the page will result in an immediate ban.</span></div>
+            <div class="qrm-rule"><span class="qrm-rule-i">🏆</span><span>Your fastest time and correct answers determine your rank.</span></div>
+            <div class="qrm-rule"><span class="qrm-rule-i">📅</span><span>New quiz every Monday. Only one attempt per week.</span></div>
+            <button class="qrm-ok-btn" id="qrm-ok-btn" onclick="window.quizStartFromModal()" disabled>START QUIZ</button>
+            <div class="qrm-countdown" id="qrm-countdown"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
     <!-- ANTI-CHEAT OVERLAY                                           -->
     <!-- ============================================================ -->
     <div id="quiz-cheat-overlay">
