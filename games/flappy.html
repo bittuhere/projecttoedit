@@ -182,57 +182,6 @@
     </style>
 
 <script>
-// === FPS LIMITER & VISIBILITY PAUSE ===
-(function() {
-    var TARGET_FPS = 60;
-    var FRAME_DURATION = 1000 / TARGET_FPS;
-    var lastFrame = 0;
-    var paused = false;
-
-    // Pause on tab switch
-    document.addEventListener('visibilitychange', function() {
-        paused = document.hidden;
-        if (!paused) {
-            lastFrame = performance.now(); // reset to avoid delta spikes
-        }
-    });
-
-    // Override requestAnimationFrame to respect FPS and pause
-    var originalRAF = window.requestAnimationFrame;
-    window.requestAnimationFrame = function(callback) {
-        if (paused) {
-            // If paused, schedule a check when visible (do nothing until resume)
-            return originalRAF(function() {});
-        }
-        var now = performance.now();
-        var delta = now - lastFrame;
-        if (delta >= FRAME_DURATION) {
-            lastFrame = now - (delta % FRAME_DURATION);
-            return originalRAF(callback);
-        } else {
-            // Wait until the next allowed frame
-            return originalRAF(function(ts) {
-                window.requestAnimationFrame(callback);
-            });
-        }
-    };
-
-    // Also patch setInterval if it's used for game updates (e.g., pacman)
-    // We'll replace setInterval with a throttled version.
-    var originalSetInterval = window.setInterval;
-    window.setInterval = function(callback, interval, ...args) {
-        if (interval < 20) {
-            // For very short intervals, we might need to keep them, but we can add a check.
-            // We'll keep the original but add a pause check.
-            return originalSetInterval(function() {
-                if (!paused) callback();
-            }, interval);
-        }
-        return originalSetInterval(callback, interval);
-    };
-
-    console.log('✅ FPS limiter installed (60 FPS, visibility pause)');
-})();
 </script>
 </head>
 
@@ -520,7 +469,16 @@
             ctx.restore();
         }
 
-        function loop() {
+        let lastTime = 0;
+        const _FRAME_MS = 1000 / 60;
+
+        function loop(t = 0) {
+            requestAnimationFrame(loop);
+            if (document.hidden) return;
+            const dt = t - lastTime;
+            if (dt < _FRAME_MS - 0.1) return;
+            lastTime = t;
+
             if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
@@ -532,10 +490,9 @@
             bird.update();
             drawScore(); // on canvas — no DOM = no blink
             frames++;
-            requestAnimationFrame(loop);
         }
 
-        loop();
+        requestAnimationFrame(loop);
 
         // --- CLOUD SAVE FUNCTION ---
         // --- UPDATED CLOUD SAVE WITH DEBUG ALERTS ---

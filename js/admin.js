@@ -244,6 +244,12 @@ window.adminLoadGlobalMessages = function() {
             editBtn.style.cssText = 'background:#3498db;color:#fff;';
             editBtn.onclick = (function(id) { return function() { window.adminEditMsg('global', id); }; })(m.id);
             btns.appendChild(editBtn);
+            var delBtn = document.createElement('button');
+            delBtn.textContent = 'DEL';
+            delBtn.className = 'mini-btn';
+            delBtn.style.cssText = 'background:#e74c3c;color:#fff;';
+            delBtn.onclick = (function(id) { return function() { window.adminDeleteMsg('global', id); }; })(m.id);
+            btns.appendChild(delBtn);
             row.appendChild(preview);
             row.appendChild(btns);
             list.appendChild(row);
@@ -264,6 +270,19 @@ window.adminEditMsg = function(path, key) {
                 .catch(function(e) { window.showNotify('❌ ' + e.message, 'error'); });
         }, currentText);
     }).catch(function(e) { window.showNotify('❌ Could not load: ' + e.message, 'error'); });
+};
+
+window.adminDeleteMsg = function(path, key) {
+    if (!window._isRealAdmin()) return;
+    window.showConfirm('🗑️ Delete this message permanently?', function() {
+        window.db.ref('notifications/' + path + '/' + key).remove()
+            .then(function() {
+                window.showNotify('✅ Deleted', 'success');
+                if (path === 'global') window.adminLoadGlobalMessages();
+                else window.adminLoadPrivateMsgs();
+            })
+            .catch(function(e) { window.showNotify('❌ ' + e.message, 'error'); });
+    }, '🗑️');
 };
 
 // ─── PRIVATE DM ────────────────────────────────────────────
@@ -306,6 +325,12 @@ window.adminLoadPrivateMsgs = function() {
             editBtn.style.cssText = 'background:#3498db;color:#fff;';
             editBtn.onclick = (function(id) { return function() { window.adminEditMsg('private/' + target, id); }; })(m.id);
             btns.appendChild(editBtn);
+            var delBtn = document.createElement('button');
+            delBtn.textContent = 'DEL';
+            delBtn.className = 'mini-btn';
+            delBtn.style.cssText = 'background:#e74c3c;color:#fff;';
+            delBtn.onclick = (function(id) { return function() { window.adminDeleteMsg('private/' + target, id); }; })(m.id);
+            btns.appendChild(delBtn);
             row.appendChild(preview);
             row.appendChild(btns);
             list.appendChild(row);

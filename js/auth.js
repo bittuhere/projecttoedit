@@ -454,26 +454,39 @@ document.getElementById('login-password').addEventListener('keypress', function(
 window.logout = function() {
     console.log('Logging out...');
     var _logoutUser = localStorage.getItem('playerName');
+
     if (_logoutUser && typeof window.db !== 'undefined') {
-        // Fire-and-forget: don't wait for it to complete
         try {
             var _sr = window.db.ref('status/' + _logoutUser.toLowerCase().trim());
-            _sr.onDisconnect().cancel(); // cancel any pending onDisconnect
-            // Set offline status, but do not await
+            _sr.onDisconnect().cancel();
             _sr.set({ state: 'offline', last_changed: firebase.database.ServerValue.TIMESTAMP })
                 .catch(function(e) { console.warn('Status update failed:', e); });
         } catch (e) { console.warn('Logout status update failed:', e); }
     }
-    // Immediately clear everything
+
+    if (typeof firebase !== 'undefined' && firebase.auth) {
+        firebase.auth().signOut().catch(function(e) { console.warn('Firebase signOut failed:', e); });
+    }
+
     if (window.LC) {
         window.LC.leaveAll();
     }
+
     window.spaHistory = [];
     localStorage.clear();
     try { sessionStorage.clear(); } catch (e) {}
-    // Navigate instantly
-    window.MapsTo('section-login', 'left');
-    history.replaceState(null, '', '#section-login');
+
+    window.location.replace('#section-login');
+    setTimeout(function() {
+        window.currentSection = 'section-login';
+        var sections = document.querySelectorAll('.spa-section');
+        sections.forEach(function(s) {
+            s.classList.remove('active', 'hidden-left', 'hidden-right');
+            if (s.id !== 'section-login') s.classList.add('hidden-right');
+        });
+        var loginSec = document.getElementById('section-login');
+        if (loginSec) loginSec.classList.add('active');
+    }, 50);
 };
 // ─── CHANGE PASSWORD ────────────────────────────────────────
 var _cpStep = 1;

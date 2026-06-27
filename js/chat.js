@@ -63,6 +63,7 @@ window.initChat = function() {
     // Invite listener
     if (typeof window.LC !== 'undefined') {
         window.LC.fb('section-chat', window.db.ref('invites/' + _chatPid), 'child_added', function(snap) {
+            if (window.isGameActive()) return;
             var inv = snap.val();
             if (!inv) return;
             window.db.ref('invites/' + _chatPid + '/' + snap.key).remove();
@@ -123,10 +124,17 @@ window.initChat = function() {
         el.className = 'status-sub status-orange'; }
 });
                 var cid = [myName, fn].sort().join('_');
-                var uRef = window.db.ref('chats/' + cid);
+                var uRef = window.db.ref('chats/' + cid).limitToLast(1);
                 uRef.on('value', function(cs) {
+                    if (window.isGameActive() || window.currentSection !== 'section-chat') return;
                     var msgs = cs.val(),
-                        hasU = msgs ? Object.values(msgs).some(function(m) { return m.sender === fn && !m.read; }) : false;
+                        hasU = false;
+                    if (msgs) {
+                        var lr = parseInt(localStorage.getItem('lastReadChat') || '0');
+                        Object.values(msgs).forEach(function(m) {
+                            if (m.sender === fn && m.timestamp > lr) hasU = true;
+                        });
+                    }
                     var dot = document.getElementById('unread-' + fn);
                     if (dot) dot.style.display = (hasU && window.currentChatFriend !== fn) ? 'block' : 'none';
                 });
@@ -223,7 +231,7 @@ window.loadChatMsgs = function() {
     var _lastMsgDate = '';
     if (typeof window.LC !== 'undefined') {
         window.LC.fb('section-chat', window.db.ref('chats/' + thisChatId), 'child_added', function(snap) {
-            if (window.currentChatId !== thisChatId) return;
+            if (window.isGameActive() || window.currentChatId !== thisChatId) return;
             var d = snap.val(),
                 id = snap.key;
             if (d.timestamp) {
@@ -257,7 +265,7 @@ window.loadChatMsgs = function() {
     }
     if (typeof window.LC !== 'undefined') {
         window.LC.fb('section-chat', window.db.ref('chats/' + thisChatId), 'child_changed', function(snap) {
-            if (window.currentChatId !== thisChatId) return;
+            if (window.isGameActive() || window.currentChatId !== thisChatId) return;
             var d = snap.val(),
                 el = document.getElementById('msg-' + snap.key);
             if (el && d.read && d.sender === mn) { var t = el.querySelector('.msg-status'); if (t) { t.classList.remove('tick-sent');
@@ -412,7 +420,7 @@ window._sendChatNotif = function(from, text) {
 // ─── CHAT DOT UPDATE ──────────────────────────────────────
 window.updateChatDot = function() {
     var myName = (localStorage.getItem('playerName') || '').toLowerCase().trim();
-    var lastRead = localStorage.getItem('lastReadChat') || 0;
+    var lastRead = parseInt(localStorage.getItem('lastReadChat') || '0');
     var hasUnread = false;
     window.db.ref('friends/' + myName).once('value', function(friendsSnap) {
         if (!friendsSnap.exists()) { _setDot(false); return; }
@@ -421,13 +429,12 @@ window.updateChatDot = function() {
         if (remaining === 0) { _setDot(false); return; }
         friends.forEach(function(fn) {
             var cid = [myName, fn].sort().join('_');
-            window.db.ref('chats/' + cid).once('value', function(chatSnap) {
+            window.db.ref('chats/' + cid).limitToLast(1).once('value', function(chatSnap) {
                 var msgs = chatSnap.val();
                 if (msgs) {
-                    for (var key in msgs) {
-                        var msg = msgs[key];
-                        if (msg.sender !== myName && !msg.read && msg.timestamp > lastRead) { hasUnread = true; break; }
-                    }
+                    Object.values(msgs).forEach(function(msg) {
+                        if (msg.sender !== myName && !msg.read && msg.timestamp > lastRead) { hasUnread = true; }
+                    });
                 }
                 remaining--;
                 if (remaining === 0) _setDot(hasUnread);
